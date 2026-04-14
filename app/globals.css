@@ -1,0 +1,214 @@
+/* Red Auto marketing — tokens aligned with mobile/theme/tokens.ts + docs/mobile-design.md */
+
+:root {
+  --color-primary: #ba0013;
+  --color-primary-gradient-end: #e31e24;
+  --color-primary-pressed: #93000d;
+  --color-primary-container: #ffdad6;
+
+  --color-background: #fcf9f8;
+  --color-surface: #fcf9f8;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f6f3f2;
+  --color-surface-container: #f0eded;
+  --color-surface-container-high: #eae7e7;
+
+  --color-on-surface: #1c1b1b;
+  --color-on-surface-variant: #5d3f3c;
+  --color-on-surface-muted: #926f6b;
+
+  --color-outline: #926f6b;
+  --color-outline-variant: #e7bdb8;
+
+  --color-error: #ba1a1a;
+  --color-tertiary: #006190;
+
+  --color-on-primary: #ffffff;
+
+  --shadow-card: 0 4px 12px rgba(186, 0, 19, 0.04);
+
+  --radius-button: 8px;
+  --radius-card: 22px;
+  --radius-chip: 8px;
+
+  --space-xxs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 20px;
+  --space-xl: 24px;
+  --space-xxl: 32px;
+
+  --font-inter: var(--font-inter), system-ui, -apple-system, sans-serif;
+
+  --content-max: 1100px;
+}
+
+/* `next/font` Inter attaches via body className */
+
+html {
+  height: 100%;
+  color-scheme: light;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.57;
+  color: var(--color-on-surface);
+  background: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: var(--color-tertiary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.site-main {
+  flex: 1;
+}
+
+/* Utilities */
+.u-page-padding {
+  padding-left: var(--space-md);
+  padding-right: var(--space-md);
+}
+
+.u-section {
+  padding-top: var(--space-xxl);
+  padding-bottom: var(--space-xxl);
+}
+
+.u-section--tint {
+  background: var(--color-surface-container-low);
+}
+
+.u-inner {
+  max-width: var(--content-max);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.u-display {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+  color: var(--color-on-surface);
+}
+
+.u-screen-title {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.27;
+  color: var(--color-on-surface);
+}
+
+.u-section-title {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--color-on-surface);
+}
+
+.u-body {
+  font-size: 14px;
+  line-height: 1.57;
+  color: var(--color-on-surface);
+}
+
+.u-muted {
+  font-size: 13px;
+  color: var(--color-on-surface-variant);
+}
+
+.u-caption {
+  font-size: 12px;
+  color: var(--color-on-surface-muted);
+}
+
+.u-card {
+  background: var(--color-surface-container-lowest);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-md) var(--space-xl);
+}
+
+.u-gradient-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: 12px 20px;
+  border-radius: var(--radius-button);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-on-primary);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-gradient-end));
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.u-gradient-cta:hover {
+  text-decoration: none;
+  filter: brightness(0.96);
+}
+
+.u-gradient-cta:focus-visible {
+  outline: 2px solid var(--color-tertiary);
+  outline-offset: 2px;
+}
+
+.u-link-plain {
+  color: inherit;
+}
+
+.u-link-plain:hover {
+  color: var(--color-tertiary);
+}
+
+.skip-to-content:focus {
+  transform: translateY(0);
+  outline: 2px solid var(--color-tertiary);
+  outline-offset: 2px;
+}
+
+details summary {
+  list-style: none;
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
