@@ -15,12 +15,17 @@ export interface MarketingContent {
     terms: string;
     faq: string;
     trust: string;
+    howItWorks: string;
+    forBuyers: string;
+    forSellers: string;
+    contactUs: string;
   };
   /** Short labels for the language switcher */
   langSwitcher: Record<Locale, string>;
   heroTitle: string;
   heroSubtitle: string;
   heroCtaHowItWorks: string;
+  heroCtaDownload: string;
   features: { title: string; body: string }[];
   howItWorks: {
     title: string;
@@ -29,8 +34,10 @@ export interface MarketingContent {
   audiences: {
     title: string;
     buyersTitle: string;
+    buyersSubtitle: string;
     buyersBullets: string[];
     sellersTitle: string;
+    sellersSubtitle: string;
     sellersBullets: string[];
   };
   homeFaqTeaser: {
@@ -53,6 +60,8 @@ export interface MarketingContent {
   footerTagline: string;
   footerRights: string;
   footerFollowUs: string;
+  footerResourcesLabel: string;
+  footerHelpLabel: string;
   /** Home page contact block (left: form, right: info) */
   contactSection: {
     title: string;
@@ -63,6 +72,13 @@ export interface MarketingContent {
     addressLabel: string;
     phone: string;
     address: string;
+    supportTitle: string;
+    businessTitle: string;
+    businessSubtitle: string;
+    businessEmail: string;
+    officeHoursTitle: string;
+    officeHoursMF: string;
+    officeHoursSat: string;
   };
 }
 
@@ -79,6 +95,13 @@ export interface FaqDocument {
   metaTitle: string;
   metaDescription: string;
   pageTitle: string;
+  pageSubtitle?: string;
+  supportCenterLabel?: string;
+  searchPlaceholder?: string;
+  categories?: { icon: string; label: string }[];
+  stillHaveQuestionsTitle?: string;
+  stillHaveQuestionsBody?: string;
+  contactSupportCta?: string;
   items: { question: string; answer: string }[];
 }
 

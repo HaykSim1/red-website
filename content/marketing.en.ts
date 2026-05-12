@@ -3,91 +3,103 @@ import type { MarketingContent } from "@/content/types";
 export const marketingEn: MarketingContent = {
   metaTitle: "Red Auto — auto parts marketplace",
   metaDescription:
-    "Post what you need, compare structured offers from sellers. Red Auto connects buyers and sellers in Armenia.",
+    "The no-nonsense marketplace for car parts in Armenia. Post a request, receive structured offers from sellers, and contact them directly.",
   nav: {
     home: "Home",
     privacy: "Privacy",
     terms: "Terms",
     faq: "FAQ",
     trust: "Trust",
+    howItWorks: "How it works",
+    forBuyers: "For Buyers",
+    forSellers: "For Sellers",
+    contactUs: "Contact Us",
   },
   langSwitcher: { hy: "Հայ", en: "EN", ru: "RU" },
   heroTitle: "Request a part. Pick an offer.",
   heroSubtitle:
-    "Red Auto is a request-based marketplace—not a shopping catalog. Describe your need, receive structured offers, and contact the seller outside the app.",
+    "The no-nonsense marketplace for car parts in Armenia. We connect buyers with direct sellers for precision automotive procurement.",
   heroCtaHowItWorks: "How it works",
+  heroCtaDownload: "Get the app",
   features: [
     {
       title: "Built for Armenia",
-      body: "Designed for the local market with clear buyer and seller flows.",
+      body: "Tailored specifically for the local market landscape, ensuring parts are available where you need them most.",
     },
     {
       title: "Structured offers",
-      body: "Price, condition, pickup or delivery flag, notes, and photos—without a chat thread.",
+      body: "Get transparent pricing and detailed condition reports (New, Used, Refurbished) for every quote received.",
     },
     {
-      title: "You arrange the deal",
-      body: "The platform does not process payments or shipping; you agree details directly.",
+      title: "Direct deals",
+      body: "No middleman fees. Connect directly with sellers to finalize payments and coordinate delivery terms.",
     },
   ],
   howItWorks: {
-    title: "How it works",
+    title: "Simple Workflow",
     steps: [
       {
-        title: "Post a request",
-        body: "Describe the part, attach a saved vehicle or VIN, add photos, and publish.",
+        title: "Post request",
+        body: "Tell us what you need. VIN, part name, or photos.",
       },
       {
         title: "Receive offers",
-        body: "Sellers respond with structured offers: price, condition, and pickup or delivery availability.",
+        body: "Local sellers bid on your request within minutes.",
       },
       {
-        title: "Compare and select",
-        body: "Review offers and pick one. Seller contact details unlock after selection.",
+        title: "Compare",
+        body: "Evaluate by price, condition, and seller rating.",
       },
       {
-        title: "Contact the seller",
-        body: "Arrange payment and handoff outside the app.",
+        title: "Contact",
+        body: "Message the seller and close the deal offline.",
       },
     ],
   },
   audiences: {
     title: "Who Red Auto is for",
-    buyersTitle: "For buyers",
+    buyersTitle: "For Buyers",
+    buyersSubtitle:
+      "Stop calling around. One request reaches dozens of specialized part sellers across Armenia simultaneously.",
     buyersBullets: [
-      "Save vehicles in your profile and attach them to requests quickly.",
-      "Receive multiple offers and choose the best fit.",
-      "No chat thread—only structured replies.",
+      "Save hours of search time",
+      "Access hidden inventory",
+      "Verified seller history",
     ],
-    sellersTitle: "For sellers",
+    sellersTitle: "For Sellers",
+    sellersSubtitle:
+      "Get qualified leads directly to your phone. Turn your idle inventory into revenue without expensive ads.",
     sellersBullets: [
-      "Browse the open requests feed and reply with an offer.",
-      "Selling requires an admin-approved seller application.",
-      "You can submit multiple offers when it makes sense.",
+      "Daily high-intent requests",
+      "Direct communication with buyers",
+      "Inventory-specific targeting",
     ],
   },
   homeFaqTeaser: {
-    title: "FAQ",
-    body: "Answers about sign-in, becoming a seller, offers, and payments.",
-    cta: "View all questions",
+    title: "Have more questions?",
+    body: "Explore our detailed guide on how we handle requests and seller verification.",
+    cta: "Visit FAQ Page",
   },
   disclaimerLine:
-    "Red Auto helps you find a part and contact a seller. Payments and delivery happen outside the app.",
-  screenshotsSectionTitle: "Inside the app",
+    "Payments and delivery happen outside the app.",
+  screenshotsSectionTitle: "Precision in your pocket",
   screenshotsEmpty: "Screenshots will be added soon.",
+  // TODO: Replace placeholder screenshots in /public/screenshots/.
+  // Recommended: 390×844px PNG or WebP (iPhone 14 Pro dimensions), portrait.
+  // Files: home.jpg, requests.jpg, market.jpg
   screenshots: [
     {
-      src: "/screenshots/home.png",
+      src: "/screenshots/home.jpg",
       title: "Home",
       alt: "Red Auto app home screen",
     },
     {
-      src: "/screenshots/requests.png",
+      src: "/screenshots/requests.jpg",
       title: "Requests",
       alt: "List of part requests",
     },
     {
-      src: "/screenshots/market.png",
+      src: "/screenshots/market.jpg",
       title: "Market",
       alt: "Open requests feed for sellers",
     },
@@ -98,17 +110,27 @@ export const marketingEn: MarketingContent = {
   downloadAppStoreBadgeAlt: "Download on the App Store",
   downloadGooglePlayBadgeAlt: "Get it on Google Play",
   downloadSoon: "Links will appear after the stores go live.",
-  footerTagline: "Red Auto",
+  // TODO: Replace /public/logo.png with final brand logo. Recommended: 80×80px PNG with transparent background.
+  footerTagline: "© 2024 Red Auto. High-precision automotive procurement for Armenia.",
   footerRights: "© Red Auto. All rights reserved.",
   footerFollowUs: "Follow us",
+  footerResourcesLabel: "Resources",
+  footerHelpLabel: "Help",
   contactSection: {
-    title: "Contact us",
+    title: "Get in touch",
     introLeft: "Use the form to send a message. We deliver it to info@red-auto.store.",
     infoTitle: "Contact details",
     phoneLabel: "Phone",
     emailLabel: "Email",
     addressLabel: "Address",
-    phone: "+374 00 000 000",
+    phone: "+374 10 00 00 00", // TODO: replace with real phone number
     address: "Yerevan, Armenia",
+    supportTitle: "Support Hub",
+    businessTitle: "Business Inquiries",
+    businessSubtitle: "Partnerships & Sellers",
+    businessEmail: "partners@redauto.am",
+    officeHoursTitle: "Office Hours",
+    officeHoursMF: "Monday - Friday: 10:00 - 19:00",
+    officeHoursSat: "Saturday: 11:00 - 16:00",
   },
 };

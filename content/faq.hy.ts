@@ -2,8 +2,19 @@ import type { FaqDocument } from "@/content/types";
 
 export const faqHy: FaqDocument = {
   metaTitle: "Հաճախ տրվող հարցեր — Red Auto",
-  metaDescription: "Պատասխաններ Red Auto հավելվածի մասին հաճախակի հարցերի համար։",
+  metaDescription: "Ամեն ինչ Հայաստանի ավտոպահեստամասերի հարթակի մասին:",
   pageTitle: "Հաճախ տրվող հարցեր",
+  pageSubtitle: "Ամեն ինչ Հայաստանի ճշգրիտ ավտոմոբիլային հարթակի մասին:",
+  supportCenterLabel: "ԱՋԱԿՑՈՒԹՅԱՆ ԿԵՆՏՐՈՆ",
+  searchPlaceholder: "Որոնել պատասխաններ...",
+  categories: [
+    { icon: "help_center", label: "Ընդհանուր" },
+    { icon: "shopping_cart", label: "Գնորդի ուղեցույց" },
+    { icon: "sell", label: "Վաճառողի ուղեցույց" },
+  ],
+  stillHaveQuestionsTitle: "Դեռ հարցեր ունե՞ք",
+  stillHaveQuestionsBody: "Մեր թիմն առկա է ուղղակի աջակցության համար:",
+  contactSupportCta: "Կապ Աջակցության հետ",
   items: [
     {
       question: "Ինչ է Red Auto-ն?",

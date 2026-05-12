@@ -12,65 +12,98 @@ interface ContactSectionProps {
 export function ContactSection({ lang, content, supportEmail }: ContactSectionProps) {
   const s = content.contactSection;
   const doc = getContact(lang);
-  const telHref = s.phone.replace(/\s/g, "");
 
   return (
-    <section id="contact" className="u-section u-page-padding u-section--tint">
+    <section id="contact" className="u-section u-page-padding u-section--tint" style={{ borderTop: "1px solid var(--color-outline-variant)" }}>
       <div className="u-inner">
-        <h2 className="u-screen-title" style={{ marginBottom: "var(--space-xl)" }}>
-          {s.title}
-        </h2>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))",
-            gap: "var(--space-xxl)",
-            alignItems: "start",
-          }}
-        >
+        <div className="contact-grid">
+          {/* Form side */}
           <div>
-            <p className="u-muted" style={{ marginBottom: "var(--space-lg)", maxWidth: 520 }}>
-              {s.introLeft}
-            </p>
+            <h2 className="u-display-lg" style={{ marginBottom: 32, color: "var(--color-on-surface)" }}>
+              {s.title}
+            </h2>
             <ContactForm form={doc.form} locale={lang} />
           </div>
-          <aside className="u-card" aria-labelledby="contact-info-heading">
-            <h3 id="contact-info-heading" className="u-section-title" style={{ marginBottom: "var(--space-lg)" }}>
-              {s.infoTitle}
-            </h3>
-            <dl style={{ margin: 0 }}>
-              <div style={{ marginBottom: "var(--space-lg)" }}>
-                <dt className="u-caption" style={{ marginBottom: "var(--space-xxs)" }}>
-                  {s.phoneLabel}
-                </dt>
-                <dd className="u-body" style={{ margin: 0 }}>
-                  <a href={`tel:${telHref}`} style={{ fontWeight: 600 }}>
-                    {s.phone}
-                  </a>
-                </dd>
-              </div>
-              <div style={{ marginBottom: "var(--space-lg)" }}>
-                <dt className="u-caption" style={{ marginBottom: "var(--space-xxs)" }}>
-                  {s.emailLabel}
-                </dt>
-                <dd className="u-body" style={{ margin: 0 }}>
-                  <a href={`mailto:${encodeURIComponent(supportEmail)}`} style={{ fontWeight: 600, wordBreak: "break-all" }}>
-                    {supportEmail}
-                  </a>
-                </dd>
-              </div>
-              <div>
-                <dt className="u-caption" style={{ marginBottom: "var(--space-xxs)" }}>
-                  {s.addressLabel}
-                </dt>
-                <dd className="u-body" style={{ margin: 0, lineHeight: 1.5 }}>
-                  {s.address}
-                </dd>
-              </div>
-            </dl>
-          </aside>
+
+          {/* Info side */}
+          <div style={{ display: "flex", flexDirection: "column", gap: 48 }}>
+            {/* Support Hub */}
+            <div>
+              <p
+                className="u-label-caps"
+                style={{ color: "var(--color-primary)", marginBottom: 16 }}
+              >
+                {s.supportTitle}
+              </p>
+              <p style={{ color: "var(--color-on-surface-variant)", marginBottom: 8 }}>
+                {s.address}
+              </p>
+              <a
+                href={`tel:${s.phone.replace(/\s/g, "")}`}
+                className="u-headline-md"
+                style={{ fontWeight: 700, color: "var(--color-on-surface)", textDecoration: "none" }}
+              >
+                {s.phone}
+              </a>
+            </div>
+
+            {/* Business Inquiries */}
+            <div>
+              <p
+                className="u-label-caps"
+                style={{ color: "var(--color-primary)", marginBottom: 16 }}
+              >
+                {s.businessTitle}
+              </p>
+              <p style={{ color: "var(--color-on-surface-variant)", marginBottom: 8 }}>
+                {s.businessSubtitle}
+              </p>
+              <a
+                href={`mailto:${s.businessEmail}`}
+                className="u-headline-md"
+                style={{ fontWeight: 700, color: "var(--color-on-surface)", textDecoration: "none" }}
+              >
+                {s.businessEmail}
+              </a>
+            </div>
+
+            {/* Office Hours card */}
+            <div
+              style={{
+                background: "var(--color-surface)",
+                border: "1px solid var(--color-outline-variant)",
+                borderRadius: 8,
+                padding: 24,
+              }}
+            >
+              <h4 className="u-headline-md" style={{ marginBottom: 8, color: "var(--color-on-surface)" }}>
+                {s.officeHoursTitle}
+              </h4>
+              <p style={{ color: "var(--color-on-surface-variant)", marginBottom: 4 }}>
+                {s.officeHoursMF}
+              </p>
+              <p style={{ color: "var(--color-on-surface-variant)", margin: 0 }}>
+                {s.officeHoursSat}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
+
+      <style>{`
+        .contact-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 48px;
+          align-items: start;
+        }
+        @media (min-width: 768px) {
+          .contact-grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 96px;
+          }
+        }
+      `}</style>
     </section>
   );
 }

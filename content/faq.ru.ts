@@ -2,8 +2,19 @@ import type { FaqDocument } from "@/content/types";
 
 export const faqRu: FaqDocument = {
   metaTitle: "Частые вопросы — Red Auto",
-  metaDescription: "Ответы на распространённые вопросы о приложении Red Auto.",
-  pageTitle: "Частые вопросы",
+  metaDescription: "Всё, что нужно знать о ведущей платформе автомобильных закупок в Армении.",
+  pageTitle: "Часто задаваемые вопросы",
+  pageSubtitle: "Всё, что нужно знать о ведущей высокоточной платформе автомобильных закупок в Армении.",
+  supportCenterLabel: "ЦЕНТР ПОДДЕРЖКИ",
+  searchPlaceholder: "Поиск ответов...",
+  categories: [
+    { icon: "help_center", label: "Общая информация" },
+    { icon: "shopping_cart", label: "Руководство покупателя" },
+    { icon: "sell", label: "Руководство продавца" },
+  ],
+  stillHaveQuestionsTitle: "Остались вопросы?",
+  stillHaveQuestionsBody: "Наша команда готова к прямой поддержке.",
+  contactSupportCta: "Связаться с поддержкой",
   items: [
     {
       question: "Что такое Red Auto?",

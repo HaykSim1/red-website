@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -24,14 +23,18 @@ export function SiteHeader() {
   const lang: Locale = rawLang && isLocale(rawLang) ? rawLang : "hy";
   const c = getMarketing(lang);
   const segment = segmentFromPath(pathname);
+  const currentSegment = segment || "home";
   const suffix = segment ? `/${segment}` : "";
 
   return (
     <header
       className="u-page-padding"
       style={{
-        background: "var(--color-surface-container-lowest)",
-        boxShadow: "var(--shadow-card)",
+        position: "sticky",
+        top: 0,
+        zIndex: 50,
+        background: "var(--color-surface)",
+        borderBottom: "1px solid var(--color-outline-variant)",
       }}
     >
       <div
@@ -41,87 +44,133 @@ export function SiteHeader() {
           alignItems: "center",
           justifyContent: "space-between",
           gap: "var(--space-md)",
-          paddingTop: "var(--space-md)",
-          paddingBottom: "var(--space-md)",
+          height: 80,
         }}
       >
+        {/* Logo */}
         <Link
           href={`/${lang}`}
-          className="u-link-plain"
           style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "var(--space-sm)",
+            fontWeight: 700,
+            fontSize: 20,
+            color: "var(--color-primary)",
             textDecoration: "none",
+            letterSpacing: "-0.01em",
+            flexShrink: 0,
           }}
         >
-          <Image src="/logo.png" alt="Red Auto" width={40} height={40} priority />
-          <span className="u-screen-title" style={{ fontSize: 18 }}>
-            Red Auto
-          </span>
+          Red Auto
         </Link>
-        <nav aria-label="Primary">
-          <ul
+
+        {/* Primary nav */}
+        <nav aria-label="Primary" style={{ display: "flex", alignItems: "center", gap: 32 }}>
+          <NavLink
+            href={`/${lang}#how-it-works`}
+            active={currentSegment === "home"}
+          >
+            {c.nav.howItWorks}
+          </NavLink>
+          <NavLink
+            href={`/${lang}#audiences`}
+            active={false}
+            className="hide-md"
+          >
+            {c.nav.forBuyers}
+          </NavLink>
+          <NavLink
+            href={`/${lang}#audiences`}
+            active={false}
+            className="hide-md"
+          >
+            {c.nav.forSellers}
+          </NavLink>
+          <NavLink
+            href={`/${lang}/faq`}
+            active={currentSegment === "faq"}
+            className="hide-sm"
+          >
+            {c.nav.faq}
+          </NavLink>
+        </nav>
+
+        {/* Right actions */}
+        <div style={{ display: "flex", alignItems: "center", gap: 16, flexShrink: 0 }}>
+          <Link
+            href={`/${lang}#contact`}
+            className="u-label-caps hide-sm"
             style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "var(--space-md)",
-              listStyle: "none",
-              margin: 0,
-              padding: 0,
-              alignItems: "center",
+              color: "var(--color-on-surface-variant)",
+              textDecoration: "none",
+              transition: "color 0.15s",
             }}
           >
-            <li>
-              <Link href={`/${lang}`} className="u-body u-link-plain">
-                {c.nav.home}
+            {c.nav.contactUs}
+          </Link>
+          <Link
+            href="#download"
+            className="u-gradient-cta"
+            style={{ padding: "10px 20px", fontSize: 14 }}
+          >
+            {c.heroCtaDownload}
+          </Link>
+
+          {/* Lang switcher */}
+          <div style={{ display: "flex", gap: 6, marginLeft: 8 }}>
+            {locales.map((l) => (
+              <Link
+                key={l}
+                href={`/${l}${suffix}`}
+                hrefLang={l}
+                style={{
+                  fontSize: 12,
+                  fontWeight: l === lang ? 700 : 500,
+                  color: l === lang ? "var(--color-primary)" : "var(--color-on-surface-variant)",
+                  textDecoration: "none",
+                  letterSpacing: "0.03em",
+                }}
+              >
+                {c.langSwitcher[l]}
               </Link>
-            </li>
-            <li>
-              <Link href={`/${lang}/faq`} className="u-body u-link-plain">
-                {c.nav.faq}
-              </Link>
-            </li>
-            <li>
-              <Link href={`/${lang}/trust`} className="u-body u-link-plain">
-                {c.nav.trust}
-              </Link>
-            </li>
-            <li>
-              <Link href={`/${lang}/privacy`} className="u-body u-link-plain">
-                {c.nav.privacy}
-              </Link>
-            </li>
-            <li>
-              <Link href={`/${lang}/terms`} className="u-body u-link-plain">
-                {c.nav.terms}
-              </Link>
-            </li>
-            <li
-              style={{
-                display: "flex",
-                gap: "var(--space-xs)",
-                marginLeft: "var(--space-sm)",
-              }}
-            >
-              {locales.map((l) => (
-                <Link
-                  key={l}
-                  href={`/${l}${suffix}`}
-                  className="u-caption"
-                  style={{
-                    fontWeight: l === lang ? 700 : 500,
-                    textDecoration: l === lang ? "underline" : "none",
-                  }}
-                  hrefLang={l}
-                >
-                  {c.langSwitcher[l]}
-                </Link>
-              ))}
-            </li>
-          </ul>
-        </nav>
+            ))}
+          </div>
+        </div>
       </div>
+
+      <style>{`
+        @media (max-width: 767px) { .hide-sm { display: none !important; } }
+        @media (max-width: 1023px) { .hide-md { display: none !important; } }
+      `}</style>
     </header>
+  );
+}
+
+function NavLink({
+  href,
+  active,
+  children,
+  className = "",
+}: {
+  href: string;
+  active: boolean;
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <Link
+      href={href}
+      className={className}
+      style={{
+        fontSize: 16,
+        fontWeight: active ? 700 : 400,
+        color: active ? "var(--color-primary)" : "var(--color-on-surface-variant)",
+        textDecoration: "none",
+        borderBottom: active ? "2px solid var(--color-primary)" : "2px solid transparent",
+        paddingBottom: 4,
+        transition: "color 0.15s",
+        whiteSpace: "nowrap",
+      }}
+    >
+      {children}
+    </Link>
   );
 }

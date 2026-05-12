@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import { getMarketing } from "@/content";
@@ -7,6 +6,9 @@ import type { Locale } from "@/lib/i18n";
 interface StoreDownloadSectionProps {
   lang: Locale;
 }
+
+const BADGE_HEIGHT = 56;
+const BADGE_WIDTH = 168;
 
 export function StoreDownloadSection({ lang }: StoreDownloadSectionProps) {
   const c = getMarketing(lang);
@@ -25,34 +27,28 @@ export function StoreDownloadSection({ lang }: StoreDownloadSectionProps) {
             {c.downloadSoon}
           </p>
         ) : (
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "var(--space-xl)",
-              alignItems: "center",
-            }}
-          >
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-xl)", alignItems: "center" }}>
             {iosUrl ? (
-              <Link href={iosUrl} rel="noopener noreferrer" target="_blank" style={{ lineHeight: 0 }}>
-                <Image
+              <Link href={iosUrl} rel="noopener noreferrer" target="_blank" style={{ lineHeight: 0, flexShrink: 0 }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
                   src="/badges/app-store.svg"
                   alt={c.downloadAppStoreBadgeAlt}
-                  width={250}
-                  height={83}
-                  unoptimized
+                  width={BADGE_WIDTH}
+                  height={BADGE_HEIGHT}
+                  style={{ display: "block", width: BADGE_WIDTH, height: BADGE_HEIGHT }}
                 />
               </Link>
             ) : null}
             {androidUrl ? (
-              <Link href={androidUrl} rel="noopener noreferrer" target="_blank" style={{ lineHeight: 0 }}>
-                <Image
+              <Link href={androidUrl} rel="noopener noreferrer" target="_blank" style={{ lineHeight: 0, flexShrink: 0 }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
                   src="/badges/google-play.png"
                   alt={c.downloadGooglePlayBadgeAlt}
-                  width={646}
-                  height={250}
-                  style={{ height: 56, width: "auto" }}
-                  unoptimized
+                  width={BADGE_WIDTH}
+                  height={BADGE_HEIGHT}
+                  style={{ display: "block", width: BADGE_WIDTH, height: BADGE_HEIGHT }}
                 />
               </Link>
             ) : null}

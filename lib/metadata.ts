@@ -45,6 +45,14 @@ export function buildPageMetadata({
       locale: lang,
       type: "website",
       url: canonical,
+      images: [
+        {
+          url: `${base}/opengraph-image`,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
     },
   };
 }
