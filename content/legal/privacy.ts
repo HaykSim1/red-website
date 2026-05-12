@@ -7,48 +7,45 @@ export const privacyHy: LegalDocument = {
   lastUpdated: "2026-04-14",
   sections: [
     {
-      heading: "Ընդհանուր",
-      paragraphs: [
-        "Այս փաստաթուղթը նկարագրում է, թե ինչ տեղեկություններ կարող է մշակել Red Auto շարժական հավելվածը (այսուհետ՝ «Հավելված»)։ Տեքստը նախատեսված է որպես նախնական նախագծային տարբերակ. նախքան հրապարակումը խորհուրդ է տրվում իրավաբանական վերանայում։",
-        "Հավելվածը կապում է գնորդներին և վաճառողներին ավտոպահեստամասերի պահանջների շուրջ։ Մենք չենք մշակում վճարումներ և չենք կազմակերպում առաքում հավելվածի միջոցով։",
-      ],
-    },
-    {
-      heading: "Որ տվյալներն ենք հավաքում",
-      paragraphs: [
-        "Հաշվի տվյալներ. հեռախոսահամար, OTP-ով հաստատում, JWT սեսիայի տokens հավելվածում։",
-        "Պրոֆիլ և խանութ. անուն, հասցե, հեռախոս, պատկերանշան (եթե կա), վաճառողի դիմումի դաշտեր։",
-        "Պահանջներ և առաջարկներ. տեքստ, լուսանկարներ, մասի համարներ, ընտրված մեքենայի տվյալներ (ներառյալ VIN, եթե մուտքագրեք)։",
-        "Ծանուցումներ. սարքի push token (եթե միացնեք ծանուցումները)։",
-        "Տեխնիկական տեղեկություններ. API հարցումներ, սխալների լոգեր (ըստ ձեր backend կարգավորումների)։",
-      ],
-    },
-    {
-      heading: "Ինչու ենք օգտագործում",
-      paragraphs: [
-        "Հաշվի ստեղծում և մուտք, պահանջների/առաջարկների ցուցադրում, վաճառողի հաստատում, ադմինիստրացիա և անվտանգություն։",
-        "Ձեր կողմից ընտրած լեզվով UI ցուցադրում։",
-      ],
-    },
-    {
-      heading: "Պահպանում և փոխանցում",
-      paragraphs: [
-        "Տվյալները պահվում են ձեր Red Auto backend-ի և տվյալների բազայի կարգավորումներին համապատասխան (օր. PostgreSQL, օբյեկտային պահեստ լուսանկարների համար)։",
-        "Մենք չենք վաճառում անձնական տվյալները երրորդ անձանց «գովազդային բրոքերների»։ Երրորդ ծառայություններ (SMS, push, հոսթինգ) կարող են մշակել տվյալներ ձեր պայմանագրերի շրջանակներում։",
-      ],
-    },
-    {
-      heading: "Ձեր իրավունքները",
-      paragraphs: [
-        "Կարող եք խնդրել ուղղել, թարմացնել կամ ջնջել հաշվի հետ կապված տեղեկությունները, եթե դա համապատասխանում է ձեր իրավական ռեժիմին և backend-ի հնարավորություններին։",
-      ],
-    },
-    {
-      heading: "Կապ",
-      paragraphs: [
-        "Թարմացրեք այս բաժինը աջակցման էլ. փոստով կամ կայքի URL-ով։",
-      ],
-    },
+  heading: "Որ տվյալներն ենք հավաքում",
+  paragraphs: [
+    "Հաշվի տվյալներ՝ հեռախոսահամար, OTP հաստատում և մուտքի նույնականացման տվյալներ։",
+    "Պրոֆիլ և խանութ՝ անուն, հասցե, հեռախոսահամար, պատկերանշան (եթե կա) և վաճառողի հայտի տվյալներ։",
+    "Հարցումներ և առաջարկներ՝ տեքստ, լուսանկարներ, պահեստամասի համարներ և մեքենայի տվյալներ (ներառյալ VIN, եթե այն տրամադրեք)։",
+    "Ծանուցումներ՝ սարքի push token, եթե միացնեք ծանուցումները։",
+    "Տեխնիկական տեղեկություններ՝ հավելվածի աշխատանքի, տեխնիկական հարցումների և սխալների վերաբերյալ տվյալներ։",
+  ],
+},
+{
+  heading: "Ինչու ենք օգտագործում տվյալները",
+  paragraphs: [
+    "Հաշիվ ստեղծելու, մուտք գործելու և օգտատերերի նույնականացման համար։",
+    "Հարցումներ և առաջարկներ ցուցադրելու և գնորդների ու վաճառողների միջև կապ հաստատելու համար։",
+    "Վաճառողների հաստատման, մոդերացիայի և հարթակի անվտանգության ապահովման համար։",
+    "Ծանուցումներ ուղարկելու և հավելվածի աշխատանքը բարելավելու համար։",
+    "Օգտատիրոջ կողմից ընտրված լեզվով հավելվածը ցուցադրելու համար։",
+  ],
+},
+{
+  heading: "Պահպանում և փոխանցում",
+  paragraphs: [
+    "Տվյալները պահվում են պաշտպանված սերվերներում և տվյալների պահպանման համակարգերում։",
+    "Մենք չենք վաճառում և չենք փոխանցում օգտատերերի անձնական տվյալները երրորդ կողմերին։",
+    "Որոշ ծառայություններ, ինչպիսիք են SMS, push ծանուցումները կամ հոսթինգը, կարող են մշակել տվյալներ իրենց ծառայությունների շրջանակում։",
+  ],
+},
+{
+  heading: "Ձեր իրավունքները",
+  paragraphs: [
+    "Դուք կարող եք պահանջել ձեր տվյալների թարմացում, ուղղում կամ հեռացում՝ համաձայն կիրառելի օրենքների և հարթակի հնարավորությունների։",
+  ],
+},
+{
+  heading: "Կապ",
+  paragraphs: [
+    "info@red-auto.store",
+  ],
+},
   ],
 };
 
@@ -60,46 +57,45 @@ export const privacyEn: LegalDocument = {
   lastUpdated: "2026-04-14",
   sections: [
     {
-      heading: "Overview",
-      paragraphs: [
-        "This page describes information that the Red Auto mobile application (“App”) may process. This text is a draft for product/legal review before publication.",
-        "Red Auto connects buyers and sellers around auto part requests. The platform does not process in-app payments or arrange shipping.",
-      ],
-    },
-    {
-      heading: "Data we may collect",
-      paragraphs: [
-        "Account data: phone number, OTP verification, session tokens stored on the device.",
-        "Profile and shop: name, address, phone, optional logo, seller application fields.",
-        "Requests and offers: text, photos, part numbers, vehicle context (including VIN if you enter it).",
-        "Notifications: device push token if you enable notifications.",
-        "Technical data: API traffic and error logs as configured on your backend and hosting.",
-      ],
-    },
-    {
-      heading: "Why we use it",
-      paragraphs: [
-        "To authenticate users, show requests and offers, operate seller approval and moderation, and keep the service secure.",
-        "To display the UI in the language you select in the app.",
-      ],
-    },
-    {
-      heading: "Storage and processors",
-      paragraphs: [
-        "Data is stored according to your Red Auto API configuration (for example PostgreSQL and object storage for photos).",
-        "We do not sell personal data to data brokers. Third-party providers (SMS, push delivery, hosting) may process data under their own terms where you integrate them.",
-      ],
-    },
-    {
-      heading: "Your choices",
-      paragraphs: [
-        "You may request access, correction, or deletion of account-related information where supported by your jurisdiction and backend capabilities.",
-      ],
-    },
-    {
-      heading: "Contact",
-      paragraphs: ["Replace this section with a support email or web contact URL."],
-    },
+  heading: "Data We Collect",
+  paragraphs: [
+    "Account data: phone number, OTP verification, and authentication details.",
+    "Profile and shop information: name, address, phone number, logo (if provided), and seller application details.",
+    "Requests and offers: text, photos, part numbers, and vehicle information (including VIN if provided).",
+    "Notifications: device push token if notifications are enabled.",
+    "Technical data: information related to app performance, technical requests, and error logs.",
+  ],
+},
+{
+  heading: "Why We Use Data",
+  paragraphs: [
+    "To create accounts, authenticate users, and manage access to the platform.",
+    "To display requests and offers and connect buyers with sellers.",
+    "To perform moderation, seller verification, and maintain platform security.",
+    "To send notifications and improve app functionality.",
+    "To display the interface in the language selected by the user.",
+  ],
+},
+{
+  heading: "Storage and Data Sharing",
+  paragraphs: [
+    "Data is stored on secure servers and storage systems.",
+    "We do not sell or share users’ personal data with third parties.",
+    "Some services such as SMS, push notifications, or hosting providers may process data as part of delivering their services.",
+  ],
+},
+{
+  heading: "Your Rights",
+  paragraphs: [
+    "You may request updates, corrections, or deletion of your data in accordance with applicable laws and platform capabilities.",
+  ],
+},
+{
+  heading: "Contact",
+  paragraphs: [
+    "info@red-auto.store",
+  ],
+},
   ],
 };
 
@@ -111,47 +107,44 @@ export const privacyRu: LegalDocument = {
   lastUpdated: "2026-04-14",
   sections: [
     {
-      heading: "Общие положения",
-      paragraphs: [
-        "Этот документ описывает информацию, которую может обрабатывать мобильное приложение Red Auto («Приложение»). Текст является проектом и должен быть проверен юристом перед публикацией.",
-        "Red Auto соединяет покупателей и продавцов вокруг запросов на автозапчасти. Платформа не проводит оплату внутри приложения и не организует доставку.",
-      ],
-    },
-    {
-      heading: "Какие данные мы можем собирать",
-      paragraphs: [
-        "Данные аккаунта: номер телефона, подтверждение по OTP, токены сессии на устройстве.",
-        "Профиль и магазин: имя, адрес, телефон, логотип (если есть), поля заявки продавца.",
-        "Запросы и предложения: текст, фото, номера деталей, данные автомобиля (включая VIN, если вы его вводите).",
-        "Уведомления: push-токен устройства, если вы включили уведомления.",
-        "Технические данные: API-трафик и журналы ошибок в соответствии с настройками backend и хостинга.",
-      ],
-    },
-    {
-      heading: "Зачем мы используем данные",
-      paragraphs: [
-        "Чтобы аутентифицировать пользователей, показывать запросы и предложения, проводить модерацию и одобрение продавцов, а также обеспечивать безопасность сервиса.",
-        "Чтобы показывать интерфейс на языке, выбранном в приложении.",
-      ],
-    },
-    {
-      heading: "Хранение и передача",
-      paragraphs: [
-        "Данные хранятся в соответствии с конфигурацией вашего API Red Auto (например PostgreSQL и объектное хранилище для фото).",
-        "Мы не продаём персональные данные брокерам. Сторонние сервисы (SMS, push, хостинг) могут обрабатывать данные по своим условиям, если вы их подключаете.",
-      ],
-    },
-    {
-      heading: "Ваши права",
-      paragraphs: [
-        "Вы можете запросить доступ, исправление или удаление информации, связанной с аккаунтом, если это предусмотрено применимым правом и возможностями backend.",
-      ],
-    },
-    {
-      heading: "Контакты",
-      paragraphs: [
-        "Замените этот раздел на email поддержки или URL контактной формы.",
-      ],
-    },
+  heading: "Какие данные мы собираем",
+  paragraphs: [
+    "Данные аккаунта: номер телефона, OTP-подтверждение и данные авторизации.",
+    "Профиль и магазин: имя, адрес, номер телефона, логотип (если есть) и данные заявки продавца.",
+    "Запросы и предложения: текст, фотографии, номера запчастей и данные автомобиля (включая VIN, если вы его предоставляете).",
+    "Уведомления: push-token устройства, если вы включили уведомления.",
+    "Технические данные: информация о работе приложения, технических запросах и ошибках.",
+  ],
+},
+{
+  heading: "Почему мы используем данные",
+  paragraphs: [
+    "Для создания аккаунта, входа в систему и идентификации пользователей.",
+    "Для отображения запросов и предложений, а также связи покупателей и продавцов.",
+    "Для модерации, подтверждения продавцов и обеспечения безопасности платформы.",
+    "Для отправки уведомлений и улучшения работы приложения.",
+    "Для отображения интерфейса на выбранном пользователем языке.",
+  ],
+},
+{
+  heading: "Хранение и передача данных",
+  paragraphs: [
+    "Данные хранятся на защищённых серверах и в системах хранения данных.",
+    "Мы не продаём и не передаём персональные данные пользователей третьим лицам.",
+    "Некоторые сервисы, такие как SMS, push-уведомления или хостинг, могут обрабатывать данные в рамках предоставления своих услуг.",
+  ],
+},
+{
+  heading: "Ваши права",
+  paragraphs: [
+    "Вы можете запросить обновление, исправление или удаление своих данных в соответствии с применимым законодательством и возможностями платформы.",
+  ],
+},
+{
+  heading: "Контакты",
+  paragraphs: [
+    "info@red-auto.store",
+  ],
+},
   ],
 };

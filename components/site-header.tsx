@@ -84,13 +84,6 @@ export function SiteHeader() {
           >
             {c.nav.forSellers}
           </NavLink>
-          <NavLink
-            href={`/${lang}/faq`}
-            active={currentSegment === "faq"}
-            className="hide-sm"
-          >
-            {c.nav.faq}
-          </NavLink>
         </nav>
 
         {/* Right actions */}

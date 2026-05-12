@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 
 import { AudiencesSection } from "@/components/home/audiences-section";
 import { ContactSection } from "@/components/home/contact-section";
-import { FaqTeaserSection } from "@/components/home/faq-teaser-section";
 import { HeroSection } from "@/components/home/hero-section";
 import { HowItWorksSection } from "@/components/home/how-it-works-section";
 import { ValuePropsSection } from "@/components/home/value-props-section";
@@ -44,7 +43,6 @@ export default async function HomePage({ params }: PageProps) {
       <ValuePropsSection content={c} />
       <HowItWorksSection content={c} />
       <AudiencesSection content={c} />
-      <FaqTeaserSection content={c} lang={lang} />
       <ScreenshotGallery
         sectionTitle={c.screenshotsSectionTitle}
         emptyMessage={c.screenshotsEmpty}

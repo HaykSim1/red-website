@@ -2,44 +2,52 @@ import type { LegalDocument } from "@/content/types";
 
 export const termsHy: LegalDocument = {
   metaTitle: "Օգտագործման պայմաններ — Red Auto",
-  metaDescription: "Red Auto հավելվածի օգտագործման նախնական պայմաններ (նախագծային տարբերակ)։",
+  metaDescription:
+    "Red Auto հարթակի օգտագործման պայմաններն ու հիմնական կանոնները։",
   pageTitle: "Օգտագործման պայմաններ",
   lastUpdated: "2026-04-14",
   sections: [
     {
       heading: "Ընդունում",
       paragraphs: [
-        "Օգտվելով Red Auto հավելվածից՝ դուք համաձայնում եք այս պայմաններին։ Տեքստը նախատեսված է որպես նախնական նախագիծ. նախքան հրապարակումը կատարեք իրավաբանական վերանայում։",
+        "Օգտվելով Red Auto հավելվածից՝ դուք համաձայնում եք այս օգտագործման պայմաններին։",
+        "Խորհուրդ է տրվում մինչև հրապարակումը կատարել իրավաբանական վերանայում։",
       ],
     },
     {
       heading: "Ծառայության բնույթը",
       paragraphs: [
-        "Հավելվածը օգնում է գտնել ավտոպահեստամաս և կապվել վաճառողի հետ։ Red Auto-ն **չի** մշակում վճարումներ, **չի** կազմակերպում առաքում և **չի** միջնորդում վեճերում։",
+        "Red Auto հարթակը օգնում է գնորդներին և վաճառողներին կապ հաստատել ավտոպահեստամասերի հարցումների միջոցով։",
+        "Հավելվածը չի մշակում վճարումներ, չի կազմակերպում առաքում և չի հանդիսանում գործարքների կողմ։",
       ],
     },
     {
-      heading: "Օգտատիրոջ պարտավորություններ",
+      heading: "Օգտատիրոջ պարտավորությունները",
       paragraphs: [
-        "Տրամադրեք ճշգրիտ տեղեկություններ, հարգեք այլ օգտատերերին և հետևեք կիրառելի օրենքներին։ Լուսանկարների և տեքստի համար պատասխանատու եք դուք։",
+        "Օգտատերերը պարտավոր են տրամադրել ճշգրիտ և արդիական տեղեկություններ։",
+        "Արգելվում է ապակողմնորոշող, վիրավորական կամ ապօրինի բովանդակության տեղադրումը։",
+        "Լուսանկարների, տեքստերի և հրապարակված բովանդակության պատասխանատվությունը կրում է օգտատերը։",
       ],
     },
     {
-      heading: "Վաճառողներ և ադմինիստրացիա",
+      heading: "Վաճառողներ և մոդերացիա",
       paragraphs: [
-        "Վաճառող դառնալը կարող է պահանջել հաստատում։ Ադմինիստրատորները կարող են կասեցնել հաշիվները կամ մոդերացնել բովանդակությունը՝ համաձայն ձեր ներքին քաղաքականության։",
+        "Վաճառողի հաշիվ ստեղծելու համար կարող է պահանջվել հաստատում ադմինիստրացիայի կողմից։",
+        "Ադմինիստրատորները կարող են սահմանափակել հաշիվները կամ հեռացնել բովանդակությունը՝ հարթակի կանոնների խախտման դեպքում։",
       ],
     },
     {
       heading: "Պատասխանատվության սահմանափակում",
       paragraphs: [
-        "Նախագծային տարբերակում խորհուրդ է տրվում սահմանել պատասխանատվության շրջանակները ձեր իրավաբանի հետ։",
+        "Red Auto-ն պատասխանատվություն չի կրում օգտատերերի միջև գործարքների, վճարումների, առաքման կամ վեճերի համար։",
+        "Հարթակը տրամադրվում է «ինչպես կա» սկզբունքով՝ առանց անխափան աշխատանքի երաշխիքի։",
       ],
     },
     {
       heading: "Փոփոխություններ",
       paragraphs: [
-        "Կարող ենք թարմացնել այս պայմանները. էական փոփոխությունների դեպքում ցուցադրեք ծանուցում հավելվածում կամ կայքում։",
+        "Մենք կարող ենք ժամանակ առ ժամանակ թարմացնել այս պայմանները։",
+        "Էական փոփոխությունների դեպքում կարող է ցուցադրվել ծանուցում հավելվածում կամ կայքում։",
       ],
     },
   ],
@@ -47,44 +55,52 @@ export const termsHy: LegalDocument = {
 
 export const termsEn: LegalDocument = {
   metaTitle: "Terms of Use — Red Auto",
-  metaDescription: "Draft terms for using the Red Auto mobile app (for legal review).",
+  metaDescription:
+    "Terms of use and main service rules for the Red Auto platform.",
   pageTitle: "Terms of Use",
   lastUpdated: "2026-04-14",
   sections: [
     {
-      heading: "Agreement",
+      heading: "Acceptance of Terms",
       paragraphs: [
-        "By using the Red Auto app, you agree to these terms. This document is a draft and should be reviewed by counsel before publication.",
+        "By using the Red Auto application, you agree to these Terms of Use.",
+        "It is recommended to perform a legal review before publishing this document.",
       ],
     },
     {
-      heading: "What Red Auto does",
+      heading: "Nature of the Service",
       paragraphs: [
-        "The app helps you find an auto part and contact a seller. Red Auto **does not** process payments, **does not** arrange delivery, and **does not** adjudicate disputes between users.",
+        "The Red Auto platform helps buyers and sellers connect through auto part requests.",
+        "The application does not process payments, arrange deliveries, or act as a party in transactions.",
       ],
     },
     {
-      heading: "Your responsibilities",
+      heading: "User Responsibilities",
       paragraphs: [
-        "Provide accurate information, treat other users respectfully, and comply with applicable laws. You are responsible for photos and text you upload.",
+        "Users are required to provide accurate and up-to-date information.",
+        "Posting misleading, offensive, or illegal content is prohibited.",
+        "Users are responsible for uploaded photos, text, and published content.",
       ],
     },
     {
-      heading: "Sellers and moderation",
+      heading: "Sellers and Moderation",
       paragraphs: [
-        "Becoming a seller may require approval. Administrators may suspend accounts or moderate content according to your operational policies.",
+        "Seller accounts may require approval from the administration team.",
+        "Administrators may restrict accounts or remove content in case of platform rule violations.",
       ],
     },
     {
-      heading: "Limitation of liability",
+      heading: "Limitation of Liability",
       paragraphs: [
-        "Define limitations and disclaimers with your legal advisor; placeholder text only in this draft.",
+        "Red Auto is not responsible for transactions, payments, deliveries, or disputes between users.",
+        "The platform is provided “as is” without guarantees of uninterrupted operation.",
       ],
     },
     {
-      heading: "Changes",
+      heading: "Changes to the Terms",
       paragraphs: [
-        "We may update these terms. For material changes, show a notice in the app or on this website as appropriate.",
+        "We may update these Terms of Use from time to time.",
+        "In case of significant changes, a notification may be displayed in the application or on the website.",
       ],
     },
   ],
@@ -92,44 +108,52 @@ export const termsEn: LegalDocument = {
 
 export const termsRu: LegalDocument = {
   metaTitle: "Условия использования — Red Auto",
-  metaDescription: "Проект условий использования мобильного приложения Red Auto (для юридической проверки).",
+  metaDescription:
+    "Условия использования платформы Red Auto и основные правила сервиса.",
   pageTitle: "Условия использования",
   lastUpdated: "2026-04-14",
   sections: [
     {
-      heading: "Согласие",
+      heading: "Принятие условий",
       paragraphs: [
-        "Используя приложение Red Auto, вы соглашаетесь с этими условиями. Документ является проектом и должен быть проверен юристом перед публикацией.",
+        "Используя приложение Red Auto, вы соглашаетесь с настоящими условиями использования.",
+        "Перед публикацией рекомендуется провести юридическую проверку документа.",
       ],
     },
     {
-      heading: "О сервисе",
+      heading: "Характер сервиса",
       paragraphs: [
-        "Приложение помогает найти автозапчасть и связаться с продавцом. Red Auto **не** обрабатывает платежи, **не** организует доставку и **не** выступает арбитром в спорах между пользователями.",
+        "Платформа Red Auto помогает покупателям и продавцам связываться через запросы на автозапчасти.",
+        "Приложение не обрабатывает платежи, не организует доставку и не является стороной сделки.",
       ],
     },
     {
       heading: "Обязанности пользователя",
       paragraphs: [
-        "Предоставляйте достоверные сведения, уважайте других пользователей и соблюдайте применимое законодательство. Вы несёте ответственность за загружаемые фото и текст.",
+        "Пользователи обязаны предоставлять точную и актуальную информацию.",
+        "Запрещается размещение вводящего в заблуждение, оскорбительного или незаконного контента.",
+        "Пользователь несёт ответственность за фотографии, тексты и опубликованный контент.",
       ],
     },
     {
       heading: "Продавцы и модерация",
       paragraphs: [
-        "Статус продавца может требовать одобрения. Администраторы могут блокировать аккаунты или модерировать контент в соответствии с вашей политикой.",
+        "Для получения статуса продавца может потребоваться подтверждение со стороны администрации.",
+        "Администрация может ограничивать аккаунты или удалять контент в случае нарушения правил платформы.",
       ],
     },
     {
       heading: "Ограничение ответственности",
       paragraphs: [
-        "Сформулируйте ограничения ответственности с юристом; здесь только заполнитель.",
+        "Red Auto не несёт ответственности за сделки, оплату, доставку или споры между пользователями.",
+        "Платформа предоставляется «как есть» без гарантии бесперебойной работы.",
       ],
     },
     {
-      heading: "Изменения",
+      heading: "Изменения условий",
       paragraphs: [
-        "Мы можем обновлять условия. При существенных изменениях покажите уведомление в приложении или на сайте.",
+        "Мы можем периодически обновлять данные условия использования.",
+        "В случае существенных изменений уведомление может быть отображено в приложении или на сайте.",
       ],
     },
   ],

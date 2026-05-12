@@ -1,32 +1,32 @@
 import type { TrustDocument } from "@/content/types";
 
 export const trustEn: TrustDocument = {
-  metaTitle: "Trust & safety — Red Auto",
+  metaTitle: "Trust & safety",
   metaDescription: "How Red Auto approaches moderation, user responsibility, and deals between users.",
   pageTitle: "Trust & safety",
   sections: [
     {
       heading: "What the platform provides",
       paragraphs: [
-        "Red Auto helps buyers and sellers connect around structured requests and offers. The platform does not process in-app payments or arrange shipping.",
+        "Red Auto is designed to connect buyers and sellers through requests and offers. The application does not handle payments or deliveries.",
       ],
     },
     {
-      heading: "Moderation and admin tools",
+      heading: "Moderation & Administration",
       paragraphs: [
-        "Seller applications are reviewed by administrators. Admins may suspend accounts or moderate content according to operational policies.",
+        "Seller accounts and applications are reviewed by the administration team. Administrators may restrict accounts or remove content when necessary in accordance with platform policies.",
       ],
     },
     {
-      heading: "Your responsibilities",
+      heading: "User Responsibility",
       paragraphs: [
-        "Provide accurate information, treat other users respectfully, and comply with applicable laws. You are responsible for photos and text you upload.",
+        "Users are responsible for providing accurate information, respecting other users, and following applicable laws. Users are fully responsible for uploaded photos and content.",
       ],
     },
     {
-      heading: "Disputes",
+      heading: "Dispute Resolution",
       paragraphs: [
-        "Disputes about deals, payments, or delivery are resolved directly between users. Red Auto does not adjudicate disputes.",
+        "Any disputes related to transactions, payments, or deliveries are resolved directly between the parties. Red Auto does not act as a mediator or arbitrator.",
       ],
     },
   ],

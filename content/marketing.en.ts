@@ -16,9 +16,9 @@ export const marketingEn: MarketingContent = {
     contactUs: "Contact Us",
   },
   langSwitcher: { hy: "Հայ", en: "EN", ru: "RU" },
-  heroTitle: "Request a part. Pick an offer.",
+  heroTitle: "One request — multiple offers.",
   heroSubtitle:
-    "The no-nonsense marketplace for car parts in Armenia. We connect buyers with direct sellers for precision automotive procurement.",
+    "A platform designed to connect drivers with auto parts stores, helping users find the best offers.",
   heroCtaHowItWorks: "How it works",
   heroCtaDownload: "Get the app",
   features: [
@@ -28,51 +28,51 @@ export const marketingEn: MarketingContent = {
     },
     {
       title: "Structured offers",
-      body: "Get transparent pricing and detailed condition reports (New, Used, Refurbished) for every quote received.",
+      body: "Get accurate pricing and detailed condition information for every auto part.",
     },
     {
-      title: "Direct deals",
-      body: "No middleman fees. Connect directly with sellers to finalize payments and coordinate delivery terms.",
+      title: "Direct connection",
+      body: "No middlemen or extra fees. Connect directly with sellers and find the auto part that fits you best.",
     },
   ],
   howItWorks: {
-    title: "Simple Workflow",
+    title: "How It Works",
     steps: [
       {
-        title: "Post request",
-        body: "Tell us what you need. VIN, part name, or photos.",
+        title: "Create a request",
+        body: "Upload a VIN, photo, or specify the needed auto part.",
       },
       {
         title: "Receive offers",
-        body: "Local sellers bid on your request within minutes.",
+        body: "Sellers send offers with pricing and details.",
       },
       {
         title: "Compare",
-        body: "Evaluate by price, condition, and seller rating.",
+        body: "Compare prices, condition, and options to find the best match.",
       },
       {
         title: "Contact",
-        body: "Message the seller and close the deal offline.",
+        body: "Contact the seller directly and quickly get the needed part.",
       },
     ],
   },
   audiences: {
     title: "Who Red Auto is for",
-    buyersTitle: "For Buyers",
+    buyersTitle: "For Buyer",
     buyersSubtitle:
-      "Stop calling around. One request reaches dozens of specialized part sellers across Armenia simultaneously.",
+      "Stop calling multiple stores for a single auto part. On our platform, you can receive offers from dozens of specialized sellers across Armenia with a single request.",
     buyersBullets: [
-      "Save hours of search time",
-      "Access hidden inventory",
-      "Verified seller history",
+      "Save time and stop wasting it searching for the right auto part",
+      "Discover stores and parts you can’t easily find online",
+      "Check seller reviews and ratings before making a choice",
     ],
-    sellersTitle: "For Sellers",
+    sellersTitle: "For Seller",
     sellersSubtitle:
-      "Get qualified leads directly to your phone. Turn your idle inventory into revenue without expensive ads.",
+      "Get new customers and increase sales without unnecessary advertising costs. Save time by avoiding endless phone calls.",
     sellersBullets: [
-      "Daily high-intent requests",
-      "Direct communication with buyers",
-      "Inventory-specific targeting",
+      " Receive ready-to-buy requests, Requests include all necessary information, including photos, VIN, and part details.",
+      "Expand your customer base, Without extra advertising — simply send offers to buyers.",
+      "Fast and easy connection with buyers, The buyer contacts you directly after selecting your offer.",
     ],
   },
   homeFaqTeaser: {
@@ -82,7 +82,7 @@ export const marketingEn: MarketingContent = {
   },
   disclaimerLine:
     "Payments and delivery happen outside the app.",
-  screenshotsSectionTitle: "Precision in your pocket",
+  screenshotsSectionTitle: "The Entire Marketplace in Your Pocket",
   screenshotsEmpty: "Screenshots will be added soon.",
   // TODO: Replace placeholder screenshots in /public/screenshots/.
   // Recommended: 390×844px PNG or WebP (iPhone 14 Pro dimensions), portrait.
@@ -90,17 +90,17 @@ export const marketingEn: MarketingContent = {
   screenshots: [
     {
       src: "/screenshots/home.jpg",
-      title: "Home",
+      title: "Track requests, receive offers, and connect with sellers in one app.",
       alt: "Red Auto app home screen",
     },
     {
       src: "/screenshots/requests.jpg",
-      title: "Requests",
+      title: "Create requests in just a few steps.",
       alt: "List of part requests",
     },
     {
       src: "/screenshots/market.jpg",
-      title: "Market",
+      title: "Get instant notifications about new offers.",
       alt: "Open requests feed for sellers",
     },
   ],
@@ -128,7 +128,7 @@ export const marketingEn: MarketingContent = {
     supportTitle: "Support Hub",
     businessTitle: "Business Inquiries",
     businessSubtitle: "Partnerships & Sellers",
-    businessEmail: "partners@redauto.am",
+    businessEmail: "info@red-auto.store",
     officeHoursTitle: "Office Hours",
     officeHoursMF: "Monday - Friday: 10:00 - 19:00",
     officeHoursSat: "Saturday: 11:00 - 16:00",

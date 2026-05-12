@@ -32,17 +32,6 @@ export function SiteFooter() {
             >
               Red Auto
             </div>
-            <p
-              style={{
-                color: "var(--color-on-surface)",
-                maxWidth: 360,
-                margin: 0,
-                lineHeight: 1.5,
-                fontSize: 16,
-              }}
-            >
-              {c.footerTagline}
-            </p>
           </div>
 
           {/* Right: nav columns */}
@@ -76,9 +65,6 @@ export function SiteFooter() {
               </span>
               <Link href={`/${lang}#contact`} className="footer-link">
                 {c.nav.contactUs}
-              </Link>
-              <Link href={`/${lang}/faq`} className="footer-link">
-                {c.nav.faq}
               </Link>
             </div>
           </div>
