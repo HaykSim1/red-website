@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -48,18 +49,15 @@ export function SiteHeader() {
         }}
       >
         {/* Logo */}
-        <Link
-          href={`/${lang}`}
-          style={{
-            fontWeight: 700,
-            fontSize: 20,
-            color: "var(--color-primary)",
-            textDecoration: "none",
-            letterSpacing: "-0.01em",
-            flexShrink: 0,
-          }}
-        >
-          Red Auto
+        <Link href={`/${lang}`} style={{ lineHeight: 0, flexShrink: 0 }}>
+          <Image
+            src="/logo.png"
+            alt="Red Auto"
+            width={115}
+            height={115}
+            style={{ display: "block" }}
+            priority
+          />
         </Link>
 
         {/* Primary nav */}
