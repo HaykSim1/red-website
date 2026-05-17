@@ -86,17 +86,17 @@ export const marketingRu: MarketingContent = {
   screenshotsEmpty: "Скриншоты будут добавлены позже.",
   screenshots: [
     {
-      src: "/screenshots/home.jpg",
+      src: "/screenshots/home.png",
       title: "Создавайте запросы всего за несколько шагов",
       alt: "Создавайте запросы всего за несколько шагов.",
     },
     {
-      src: "/screenshots/requests.jpg",
+      src: "/screenshots/requests.png",
       title: "Получайте мгновенные уведомления о новых предложениях",
       alt: "Получайте мгновенные уведомления о новых предложениях.",
     },
     {
-      src: "/screenshots/market.jpg",
+      src: "/screenshots/market.png",
       title: "Следите за предложениями и выбирайте лучший вариант",
       alt: "Следите за предложениями и выбирайте лучший вариант.",
     },

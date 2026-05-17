@@ -86,17 +86,17 @@ export const marketingHy: MarketingContent = {
   screenshotsEmpty: "Սքրինշոտները կավելացվեն շուտով։",
   screenshots: [
     {
-      src: "/screenshots/home.jpg",
+      src: "/screenshots/home.png",
       title: "Ստեղծեք հարցում ընդամենը մի քանի քայլով։",
       alt: "Red Auto հավելվածի գլխավոր էկրան",
     },
     {
-      src: "/screenshots/requests.jpg",
+      src: "/screenshots/requests.png",
       title: "Ստացեք ակնթարթային ծանուցումներ նոր առաջարկների մասին։",
       alt: "Պահանջների ցուցակ",
     },
     {
-      src: "/screenshots/market.jpg",
+      src: "/screenshots/market.png",
       title: "Հետևեք առաջարկներին և ընտրեք լավագույն տարբերակը։",
       alt: "Բաց պահանջների շուկա վաճառողների համար",
     },

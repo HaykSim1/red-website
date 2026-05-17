@@ -89,17 +89,17 @@ export const marketingEn: MarketingContent = {
   // Files: home.jpg, requests.jpg, market.jpg
   screenshots: [
     {
-      src: "/screenshots/home.jpg",
+      src: "/screenshots/home.png",
       title: "Track requests, receive offers, and connect with sellers in one app.",
       alt: "Red Auto app home screen",
     },
     {
-      src: "/screenshots/requests.jpg",
+      src: "/screenshots/requests.png",
       title: "Create requests in just a few steps.",
       alt: "List of part requests",
     },
     {
-      src: "/screenshots/market.jpg",
+      src: "/screenshots/market.png",
       title: "Get instant notifications about new offers.",
       alt: "Open requests feed for sellers",
     },
