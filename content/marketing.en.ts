@@ -123,7 +123,7 @@ export const marketingEn: MarketingContent = {
     phoneLabel: "Phone",
     emailLabel: "Email",
     addressLabel: "Address",
-    phone: "+374 10 00 00 00", // TODO: replace with real phone number
+    phone: "+374 95 22 89 19",
     address: "Yerevan, Armenia",
     supportTitle: "Support Hub",
     businessTitle: "Business Inquiries",

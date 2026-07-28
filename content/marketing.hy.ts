@@ -119,7 +119,7 @@ export const marketingHy: MarketingContent = {
     phoneLabel: "Հեռախոս",
     emailLabel: "Էլ. փոստ",
     addressLabel: "Հասցե",
-    phone: "+374 10 00 00 00", // TODO: replace with real phone number
+    phone: "+374 95 22 89 19",
     address: "Երևան, Հայաստան",
     supportTitle: "Աջակցության կենտրոն",
     businessTitle: "Բիզնես հարցումներ",
