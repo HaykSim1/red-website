@@ -50,12 +50,3 @@ export function clearRefreshCookie(res: NextResponse): void {
     });
   }
 }
-
-/** API origin as seen from the Next server, which may differ from the browser's view. */
-export function apiBaseUrl(): string {
-  const raw =
-    process.env.API_INTERNAL_URL ??
-    process.env.NEXT_PUBLIC_API_URL ??
-    'http://localhost:3000';
-  return raw.replace(/\/$/, '');
-}

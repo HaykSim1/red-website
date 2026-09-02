@@ -1,7 +1,8 @@
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 
-import { apiBaseUrl, clearRefreshCookie, REFRESH_COOKIE, setRefreshCookie } from '@/lib/app/auth-cookie';
+import { clearRefreshCookie, REFRESH_COOKIE, setRefreshCookie } from '@/lib/app/auth-cookie';
+import { ApiUnreachableError, postToApi } from '@/lib/app/server-api';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -22,17 +23,17 @@ export async function POST() {
 
   let upstream: Response;
   try {
-    upstream = await fetch(`${apiBaseUrl()}/v1/auth/refresh`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ refresh_token: refreshToken }),
-    });
-  } catch {
-    // Network blip: keep the cookie so a retry can still succeed.
-    return NextResponse.json(
-      { code: 'api_unreachable', message: 'Could not reach the API' },
-      { status: 502 },
-    );
+    upstream = await postToApi('/v1/auth/refresh', { refresh_token: refreshToken });
+  } catch (error) {
+    if (error instanceof ApiUnreachableError) {
+      // Network blip: keep the cookie so a retry can still succeed. Clearing it
+      // here would sign the user out over a transient outage.
+      return NextResponse.json(
+        { code: 'api_unreachable', message: 'Could not reach the API' },
+        { status: 502 },
+      );
+    }
+    throw error;
   }
 
   const data = (await upstream.json().catch(() => null)) as

@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
 
-import { apiBaseUrl, setRefreshCookie } from '@/lib/app/auth-cookie';
+import { setRefreshCookie } from '@/lib/app/auth-cookie';
+import { ApiUnreachableError, postToApi } from '@/lib/app/server-api';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -27,16 +28,15 @@ export async function POST(request: Request) {
 
   let upstream: Response;
   try {
-    upstream = await fetch(`${apiBaseUrl()}/v1/auth/otp/verify`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(parsed),
-    });
-  } catch {
-    return NextResponse.json(
-      { code: 'api_unreachable', message: 'Could not reach the API' },
-      { status: 502 },
-    );
+    upstream = await postToApi('/v1/auth/otp/verify', parsed);
+  } catch (error) {
+    if (error instanceof ApiUnreachableError) {
+      return NextResponse.json(
+        { code: 'api_unreachable', message: 'Could not reach the API' },
+        { status: 502 },
+      );
+    }
+    throw error;
   }
 
   const data = (await upstream.json().catch(() => null)) as

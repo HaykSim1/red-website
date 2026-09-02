@@ -1,7 +1,8 @@
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 
-import { apiBaseUrl, clearRefreshCookie, REFRESH_COOKIE } from '@/lib/app/auth-cookie';
+import { clearRefreshCookie, REFRESH_COOKIE } from '@/lib/app/auth-cookie';
+import { postToApi } from '@/lib/app/server-api';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -17,11 +18,7 @@ export async function POST() {
 
   if (refreshToken) {
     try {
-      await fetch(`${apiBaseUrl()}/v1/auth/logout`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ refresh_token: refreshToken }),
-      });
+      await postToApi('/v1/auth/logout', { refresh_token: refreshToken });
     } catch {
       /* ignore — the cookie is cleared regardless */
     }
