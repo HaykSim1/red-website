@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 
@@ -48,20 +49,17 @@ export function Sidebar({
         open ? "translate-x-0" : "-translate-x-full",
       ].join(" ")}
     >
-      <div className="flex items-center justify-between px-6 py-8">
+      <div className="flex items-center justify-between px-6 py-4">
         <Link
           href={`/${lang}/app`}
           onClick={onNavigate}
-          className="flex items-center gap-2 rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          className="rounded leading-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
         >
-          <span className="flex h-8 w-8 items-center justify-center rounded bg-primary">
-            <span className="material-symbols-outlined text-[20px] text-on-primary">
-              precision_manufacturing
-            </span>
-          </span>
-          <span className="font-headline text-2xl font-bold uppercase tracking-tighter text-on-surface">
-            Red Auto
-          </span>
+          {/* The real mark already carries the "RED" wordmark, so it stands alone
+              here exactly as it does in the marketing header. The source PNG is
+              500x500 with the artwork occupying only the middle ~60%/56%, so the
+              box has to be noticeably larger than the mark should appear. */}
+          <Image src="/logo.png" alt="Red Auto" width={500} height={500} priority className="h-20 w-auto" />
         </Link>
         <button
           type="button"

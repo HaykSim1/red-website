@@ -2,7 +2,7 @@
 
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { Button } from "@/components/app/ui/button";
@@ -16,6 +16,7 @@ import { translateApiError } from "@/lib/app/error-msg";
 import { qk } from "@/lib/app/query-keys";
 import type { RequestListItem, Vehicle } from "@/lib/app/types";
 import { isValidVinFormat, normalizeVin } from "@/lib/app/vin";
+import { decodeVinFromVpic, type VpicDecodeOk } from "@/lib/app/vpic-decode-vin";
 import type { Locale } from "@/lib/i18n";
 
 export function NewRequestForm({ lang }: { lang: Locale }) {
@@ -41,6 +42,35 @@ export function NewRequestForm({ lang }: { lang: Locale }) {
   const vinNormalized = normalizeVin(vin);
   const vinLooksWrong = vinNormalized.length > 0 && !isValidVinFormat(vinNormalized);
 
+  /**
+   * Decoded in the background, never shown. A VIN typed here that is not already
+   * one of the saved vehicles gets turned into one after the request is created,
+   * and this is what fills in its brand/model/year/engine. Failure is silent:
+   * the lookup is a convenience, and the request must not depend on it.
+   *
+   * The result is stored with the VIN it came from, so a decode that lands after
+   * the user has edited the field can never be attributed to the new VIN.
+   */
+  const [decoded, setDecoded] = useState<{ vin: string; data: VpicDecodeOk } | null>(null);
+
+  useEffect(() => {
+    // 11 characters is enough for the WMI + VDS that identify make and model;
+    // waiting for all 17 would miss partially-typed VINs the service can still
+    // resolve. Same threshold as the mobile screen.
+    if (vinNormalized.length < 11) return;
+    let cancelled = false;
+    void decodeVinFromVpic(vinNormalized).then((result) => {
+      if (cancelled) return;
+      setDecoded(result.ok ? { vin: vinNormalized, data: result } : null);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [vinNormalized]);
+
+  /** Only trust a decode that belongs to the VIN currently in the field. */
+  const decodedForVin = decoded?.vin === vinNormalized ? decoded.data : null;
+
   const createM = useMutation({
     mutationFn: () =>
       apiJson<RequestListItem>("/requests", {
@@ -60,6 +90,27 @@ export function NewRequestForm({ lang }: { lang: Locale }) {
     onSuccess: (created) => {
       void queryClient.invalidateQueries({ queryKey: ["requests"] });
       void queryClient.invalidateQueries({ queryKey: qk.homeSummary });
+
+      // Save a VIN the user typed by hand as a vehicle, so the next request can
+      // just pick it. Skipped when it merely repeats the vehicle they selected.
+      const selectedVin = vehiclesQ.data?.find((v) => v.id === vehicleId)?.vin ?? "";
+      if (vinNormalized && vinNormalized !== normalizeVin(selectedVin)) {
+        void apiJson("/vehicles", {
+          method: "POST",
+          body: JSON.stringify({
+            vin: vinNormalized,
+            brand: decodedForVin?.brand || null,
+            model: decodedForVin?.model || null,
+            year: decodedForVin?.year ? Number(decodedForVin.year) : null,
+            engine: decodedForVin?.engine || null,
+          }),
+        })
+          .then(() => queryClient.invalidateQueries({ queryKey: qk.vehicles }))
+          // Best effort: the request is already created and is what the user
+          // came for. A duplicate or rejected vehicle must not surface as an error.
+          .catch(() => {});
+      }
+
       router.replace(`/${lang}/app/requests/${created.id}`);
     },
     onError: (e) => setError(translateApiError(e, i18n)),

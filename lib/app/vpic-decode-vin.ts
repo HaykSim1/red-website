@@ -26,14 +26,25 @@ function getVariableValue(results: VpicResultItem[], variable: string): string {
   return String(v).trim();
 }
 
+/**
+ * vPIC returns displacement at whatever precision the source record holds — a
+ * Honda Accord comes back as "2.998832712", a BMW as "2.00". Nobody writes an
+ * engine size to nine decimals, so round to one.
+ */
+function formatDisplacement(raw: string, unit: 'L' | 'cu in'): string {
+  const n = Number(raw);
+  if (!Number.isFinite(n)) return `${raw} ${unit}`;
+  return unit === 'L' ? `${n.toFixed(1)} L` : `${Math.round(n)} cu in`;
+}
+
 function buildEngineSummary(results: VpicResultItem[]): string {
   const liters = getVariableValue(results, 'Displacement (L)');
   const ci = getVariableValue(results, 'Displacement (CI)');
   const cyl = getVariableValue(results, 'Engine Number of Cylinders');
   const fuel = getVariableValue(results, 'Fuel Type - Primary');
   const parts: string[] = [];
-  if (liters) parts.push(`${liters} L`);
-  else if (ci) parts.push(`${ci} cu in`);
+  if (liters) parts.push(formatDisplacement(liters, 'L'));
+  else if (ci) parts.push(formatDisplacement(ci, 'cu in'));
   if (cyl) parts.push(`${cyl} cyl`);
   if (fuel) parts.push(fuel);
   return parts.join(', ');

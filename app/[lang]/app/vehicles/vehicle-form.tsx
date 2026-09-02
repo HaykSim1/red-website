@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import { Button } from "@/components/app/ui/button";
 import { Field } from "@/components/app/ui/field";
 import { Alert } from "@/components/app/ui/states";
+import { VinField } from "@/components/app/ui/vin-field";
 import type { Vehicle } from "@/lib/app/types";
 import { isValidVinFormat, normalizeVin } from "@/lib/app/vin";
 
@@ -89,12 +90,21 @@ export function VehicleForm({
     >
       {error ? <Alert>{error}</Alert> : null}
 
-      <Field
-        label={t("vehicles.vin")}
-        placeholder={t("vehicles.vinPlaceholder")}
+      <VinField
         value={draft.vin}
-        onChange={(e) => onChange({ ...draft, vin: e.target.value.toUpperCase() })}
-        maxLength={32}
+        onChange={(vin) => onChange({ ...draft, vin })}
+        onAutofill={(decoded) =>
+          onChange({
+            ...draft,
+            // Only fill blanks: a lookup must never overwrite something the
+            // owner typed themselves, and vPIC's model strings are often
+            // coarser than what a person would write.
+            brand: draft.brand.trim() || decoded.brand,
+            model: draft.model.trim() || decoded.model,
+            year: draft.year.trim() || decoded.year,
+            engine: draft.engine.trim() || decoded.engine,
+          })
+        }
       />
 
       <div className="grid gap-5 sm:grid-cols-2">

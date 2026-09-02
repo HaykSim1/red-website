@@ -145,7 +145,9 @@ export function LoginForm({ lang }: { lang: Locale }) {
   return (
     <main className="w-full max-w-sm">
       <div className="flex flex-col items-center text-center">
-        <Image src="/logo.png" alt="Red Auto" width={96} height={96} priority className="mb-2" />
+        {/* The source PNG carries ~40% transparent margin, so the box is larger
+            than the mark should appear. */}
+        <Image src="/logo.png" alt="Red Auto" width={500} height={500} priority className="mb-1 h-28 w-auto" />
         <h1 className="font-headline text-2xl font-bold tracking-tight text-on-surface">
           {t("web.signInTitle")}
         </h1>
