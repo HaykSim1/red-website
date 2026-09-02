@@ -27,19 +27,41 @@ export function Modal({
   const panelRef = useRef<HTMLDivElement>(null);
   const restoreFocusTo = useRef<HTMLElement | null>(null);
 
+  /**
+   * The Escape handler needs the current onClose, but the effect below must not
+   * depend on it. Callers pass an inline arrow, so onClose has a new identity on
+   * every parent render — including every keystroke in a form inside the modal.
+   * With onClose in the dependency array the whole effect tore down and re-ran
+   * per character, and its setup line moved focus to the first focusable element,
+   * throwing the user out of the field they were typing in after one letter.
+   */
+  const onCloseRef = useRef(onClose);
+  useEffect(() => {
+    onCloseRef.current = onClose;
+  }, [onClose]);
+
   useEffect(() => {
     if (!open) return;
     restoreFocusTo.current = document.activeElement as HTMLElement | null;
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
-    panelRef.current?.querySelector<HTMLElement>(
-      "input, textarea, select, button, [href], [tabindex]:not([tabindex='-1'])",
+    // Prefer the first form control over the header's close button, which is
+    // what a plain first-focusable query would land on.
+    const panel = panelRef.current;
+    const firstField = panel?.querySelector<HTMLElement>(
+      "input:not([disabled]), textarea:not([disabled]), select:not([disabled])",
+    );
+    (
+      firstField ??
+      panel?.querySelector<HTMLElement>(
+        "button:not([disabled]), [href], [tabindex]:not([tabindex='-1'])",
+      )
     )?.focus();
 
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        onClose();
+        onCloseRef.current();
         return;
       }
       if (e.key !== "Tab" || !panelRef.current) return;
@@ -64,7 +86,7 @@ export function Modal({
       document.body.style.overflow = previousOverflow;
       restoreFocusTo.current?.focus();
     };
-  }, [open, onClose]);
+  }, [open]);
 
   if (!open) return null;
 

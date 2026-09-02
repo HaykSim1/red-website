@@ -70,19 +70,28 @@ function Lightbox({
     [index, total, onIndexChange],
   );
 
+  // The scroll lock belongs to the lightbox being mounted, not to the identity of
+  // its callbacks. Tying the two together means a parent re-render releases and
+  // re-takes the lock, and it is what let a re-running effect steal focus in
+  // Modal — keep them separate.
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, []);
+
+  // Rebinding a key listener is cheap and side-effect free, so this one can
+  // safely follow the callbacks.
+  useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
       if (e.key === "ArrowRight") step(1);
       if (e.key === "ArrowLeft") step(-1);
     };
     document.addEventListener("keydown", onKeyDown);
-    return () => {
-      document.removeEventListener("keydown", onKeyDown);
-      document.body.style.overflow = previousOverflow;
-    };
+    return () => document.removeEventListener("keydown", onKeyDown);
   }, [onClose, step]);
 
   const src = mediaUrl(photos[index].storage_key);
