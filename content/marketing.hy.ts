@@ -14,6 +14,7 @@ export const marketingHy: MarketingContent = {
     forBuyers: "Գնորդների համար",
     forSellers: "Վաճառողների համար",
     contactUs: "Կապ",
+    logIn: "Մուտք",
   },
   langSwitcher: { hy: "Հայ", en: "EN", ru: "RU" },
   heroTitle: "Մի հարցում, բազմաթիվ առաջարկներ",

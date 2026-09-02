@@ -1,9 +1,6 @@
 import { notFound } from "next/navigation";
 
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
-import { SkipToContent } from "@/components/skip-to-content";
-import { isLocale, type Locale } from "@/lib/i18n";
+import { isLocale } from "@/lib/i18n";
 import { locales } from "@/lib/i18n";
 
 interface LangLayoutProps {
@@ -15,19 +12,14 @@ export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
 }
 
+/**
+ * Validates the locale segment for every route below it. Chrome lives one level
+ * down, in the route groups: (marketing) keeps the site header/footer, (app) and
+ * (auth) render the product shell instead.
+ */
 export default async function LangLayout({ children, params }: LangLayoutProps) {
-  const { lang: raw } = await params;
-  if (!isLocale(raw)) notFound();
-  const lang: Locale = raw;
+  const { lang } = await params;
+  if (!isLocale(lang)) notFound();
 
-  return (
-    <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh", position: "relative" }}>
-      <SkipToContent lang={lang} />
-      <SiteHeader />
-      <main id="main-content" className="site-main" tabIndex={-1}>
-        {children}
-      </main>
-      <SiteFooter />
-    </div>
-  );
+  return children;
 }

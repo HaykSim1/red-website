@@ -14,6 +14,7 @@ export const marketingEn: MarketingContent = {
     forBuyers: "For Buyers",
     forSellers: "For Sellers",
     contactUs: "Contact Us",
+    logIn: "Log in",
   },
   langSwitcher: { hy: "Հայ", en: "EN", ru: "RU" },
   heroTitle: "One request — multiple offers.",

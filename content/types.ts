@@ -19,6 +19,7 @@ export interface MarketingContent {
     forBuyers: string;
     forSellers: string;
     contactUs: string;
+    logIn: string;
   };
   /** Short labels for the language switcher */
   langSwitcher: Record<Locale, string>;

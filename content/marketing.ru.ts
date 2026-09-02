@@ -14,6 +14,7 @@ export const marketingRu: MarketingContent = {
     forBuyers: "Для покупателей",
     forSellers: "Для продавцов",
     contactUs: "Связаться",
+    logIn: "Вход",
   },
   langSwitcher: { hy: "Հայ", en: "EN", ru: "RU" },
   heroTitle: "Один запрос — множество предложений.",

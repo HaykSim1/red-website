@@ -98,8 +98,21 @@ export function SiteHeader() {
             {c.nav.contactUs}
           </Link>
           <Link
+            href={`/${lang}/login`}
+            className="u-label-caps"
+            style={{
+              color: "var(--color-primary)",
+              fontWeight: 700,
+              textDecoration: "none",
+              whiteSpace: "nowrap",
+              transition: "color 0.15s",
+            }}
+          >
+            {c.nav.logIn}
+          </Link>
+          <Link
             href="#download"
-            className="u-gradient-cta"
+            className="u-gradient-cta hide-sm"
             style={{ padding: "10px 20px", fontSize: 14 }}
           >
             {c.heroCtaDownload}

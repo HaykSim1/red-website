@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import "./globals.css";
+
 export default function NotFound() {
   return (
     <main className="u-page-padding u-section" style={{ textAlign: "center" }}>

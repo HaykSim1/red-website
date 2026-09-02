@@ -1,0 +1,158 @@
+/**
+ * Tailwind v4 for the authenticated app section only.
+ *
+ * This stylesheet is imported from app/[lang]/app/layout.tsx and
+ * app/[lang]/login/layout.tsx, so Next only ships it on those routes — the
+ * marketing pages under (marketing) never load it and Tailwind's preflight
+ * never touches app/globals.css.
+ *
+ * `source()` points at the workspace root so class detection covers app/ and
+ * components/; `@source not` keeps the marketing tree out of the scan.
+ */
+@import "tailwindcss" source("../../..");
+@source not "../(marketing)";
+@source not "../../../content";
+
+@theme {
+  /* Transcribed verbatim from the Stitch export theme config — identical to
+     admin/src/index.css so the two web surfaces cannot drift apart. */
+  --color-background: #fcf9f8;
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-inverse-on-surface: #f3f0ef;
+  --color-inverse-primary: #ffb4ab;
+  --color-inverse-surface: #313030;
+  --color-on-background: #1c1b1b;
+  --color-on-error: #ffffff;
+  --color-on-error-container: #93000a;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #fffafa;
+  --color-on-primary-fixed: #410002;
+  --color-on-primary-fixed-variant: #93000d;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-container: #700409;
+  --color-on-secondary-fixed: #410002;
+  --color-on-secondary-fixed-variant: #8a1b19;
+  --color-on-surface: #1c1b1b;
+  --color-on-surface-variant: #5d3f3c;
+  --color-on-tertiary: #ffffff;
+  --color-on-tertiary-container: #fbfcff;
+  --color-on-tertiary-fixed: #001e30;
+  --color-on-tertiary-fixed-variant: #004b71;
+  --color-outline: #926f6b;
+  --color-outline-variant: #e7bdb8;
+  --color-primary: #ba0013;
+  --color-primary-container: #e31e24;
+  --color-primary-fixed: #ffdad6;
+  --color-primary-fixed-dim: #ffb4ab;
+  --color-secondary: #ab332d;
+  --color-secondary-container: #ff7166;
+  --color-secondary-fixed: #ffdad6;
+  --color-secondary-fixed-dim: #ffb4ab;
+  --color-surface: #fcf9f8;
+  --color-surface-bright: #fcf9f8;
+  --color-surface-container: #f0eded;
+  --color-surface-container-high: #eae7e7;
+  --color-surface-container-highest: #e5e2e1;
+  --color-surface-container-low: #f6f3f2;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-dim: #dcd9d9;
+  --color-surface-tint: #c00014;
+  --color-surface-variant: #e5e2e1;
+  --color-tertiary: #006190;
+  --color-tertiary-container: #007bb5;
+  --color-tertiary-fixed: #cbe6ff;
+  --color-tertiary-fixed-dim: #8ecdff;
+
+  /* Success / verified chip — from mobile/theme/tokens.ts, not in the Stitch set */
+  --color-verified-container: #e8f5e9;
+  --color-on-verified: #1b5e20;
+
+  --font-headline: "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+}
+
+/**
+ * The same tokens, pinned to the app shell by inheritance.
+ *
+ * app/globals.css defines a `--color-*` set with the SAME names but different
+ * values (`--color-primary-container` is pale pink there, bright red here) using
+ * un-layered `:root` rules, which outrank anything Tailwind emits into
+ * `@layer theme` regardless of file order. It no longer loads on app routes, so
+ * this is belt-and-braces — but it is cheap, and it means a stray global import
+ * can never silently repaint the product in marketing colours.
+ *
+ * Generated from the @theme block above — keep the two in step.
+ */
+.app-root {
+  --color-background: #fcf9f8;
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-inverse-on-surface: #f3f0ef;
+  --color-inverse-primary: #ffb4ab;
+  --color-inverse-surface: #313030;
+  --color-on-background: #1c1b1b;
+  --color-on-error: #ffffff;
+  --color-on-error-container: #93000a;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #fffafa;
+  --color-on-primary-fixed: #410002;
+  --color-on-primary-fixed-variant: #93000d;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-container: #700409;
+  --color-on-secondary-fixed: #410002;
+  --color-on-secondary-fixed-variant: #8a1b19;
+  --color-on-surface: #1c1b1b;
+  --color-on-surface-variant: #5d3f3c;
+  --color-on-tertiary: #ffffff;
+  --color-on-tertiary-container: #fbfcff;
+  --color-on-tertiary-fixed: #001e30;
+  --color-on-tertiary-fixed-variant: #004b71;
+  --color-outline: #926f6b;
+  --color-outline-variant: #e7bdb8;
+  --color-primary: #ba0013;
+  --color-primary-container: #e31e24;
+  --color-primary-fixed: #ffdad6;
+  --color-primary-fixed-dim: #ffb4ab;
+  --color-secondary: #ab332d;
+  --color-secondary-container: #ff7166;
+  --color-secondary-fixed: #ffdad6;
+  --color-secondary-fixed-dim: #ffb4ab;
+  --color-surface: #fcf9f8;
+  --color-surface-bright: #fcf9f8;
+  --color-surface-container: #f0eded;
+  --color-surface-container-high: #eae7e7;
+  --color-surface-container-highest: #e5e2e1;
+  --color-surface-container-low: #f6f3f2;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-dim: #dcd9d9;
+  --color-surface-tint: #c00014;
+  --color-surface-variant: #e5e2e1;
+  --color-tertiary: #006190;
+  --color-tertiary-container: #007bb5;
+  --color-tertiary-fixed: #cbe6ff;
+  --color-tertiary-fixed-dim: #8ecdff;
+  --color-verified-container: #e8f5e9;
+  --color-on-verified: #1b5e20;
+}
+
+@layer base {
+  /* The product shell owns its own canvas; the marketing body styles in
+     globals.css still apply to (marketing) routes only. */
+  .app-root {
+    background: var(--color-surface);
+    color: var(--color-on-surface);
+    font-family: var(--font-body);
+    min-height: 100svh;
+  }
+}
+
+/* Material Symbols baseline alignment — same rule as the admin panel. */
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  line-height: 1;
+  user-select: none;
+}

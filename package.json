@@ -6,22 +6,31 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "openapi:gen": "openapi-typescript http://127.0.0.1:3000/swagger/json -o lib/app/api-generated.d.ts"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.102.8",
+    "i18next": "^25.10.10",
     "next": "16.2.3",
     "nodemailer": "^8.0.5",
     "react": "19.2.4",
     "react-dom": "19.2.4",
+    "react-i18next": "^16.6.6",
+    "socket.io-client": "^4.8.3",
     "zod": "^4.3.6"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^20",
     "@types/nodemailer": "^8.0.0",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.3",
+    "openapi-typescript": "^7.13.0",
+    "postcss": "^8.5.26",
+    "tailwindcss": "^4.3.3",
     "typescript": "^5"
   }
 }

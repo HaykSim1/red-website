@@ -3,7 +3,11 @@ import { Inter } from "next/font/google";
 
 import { LangAttribute } from "@/components/lang-attribute";
 
-import "./globals.css";
+// globals.css is deliberately NOT imported here. It styles bare elements (a, body)
+// with un-layered rules, which outrank every Tailwind utility no matter the file
+// order — loading it site-wide repainted the app section's buttons as links.
+// It is imported by the (marketing) layout and by not-found.tsx instead, so it
+// reaches exactly the pages it was written for.
 
 const inter = Inter({
   subsets: ["latin", "latin-ext", "cyrillic", "cyrillic-ext"],
