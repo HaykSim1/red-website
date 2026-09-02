@@ -5,6 +5,8 @@ import { useCallback, useEffect, useRef, useState, type ReactNode } from "react"
 import { useTranslation } from "react-i18next";
 
 import { useMe } from "@/hooks/app/use-me";
+import { useRealtimeSync } from "@/hooks/app/use-realtime-sync";
+import { useRoleWatcher } from "@/hooks/app/use-role-watcher";
 import type { Locale } from "@/lib/i18n";
 
 import { BottomTabs } from "./bottom-tabs";
@@ -35,6 +37,11 @@ export function AppShell({ lang, children }: { lang: Locale; children: ReactNode
   const { t } = useTranslation();
   const pathname = usePathname();
   const { isSeller } = useMe();
+
+  // Live cache invalidation, and the poll that turns an approved seller
+  // application into seller permissions without a re-login.
+  useRealtimeSync();
+  useRoleWatcher();
 
   const [open, setOpen] = useState(false);
   const [isDesktop, setIsDesktop] = useState(true);

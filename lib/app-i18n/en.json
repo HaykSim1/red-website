@@ -303,7 +303,9 @@
     "uploading": "Uploading…",
     "uploadFailed": "Upload failed. Please try again.",
     "fileTooLarge": "That image is too large (max 15 MB).",
-    "goToApp": "Open app"
+    "goToApp": "Open app",
+    "marketplaceLead": "Browse open requests and submit competitive offers.",
+    "chooseFile": "Choose photo"
   },
   "deal": {
     "acceptOffer": "Accept offer",

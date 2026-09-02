@@ -104,7 +104,7 @@ export function PhotoPicker({
         onClick={() => inputRef.current?.click()}
         icon={<span className="material-symbols-outlined text-[18px]">add_photo_alternate</span>}
       >
-        {uploading ? t("web.uploading") : t("web.chooseFiles")}
+        {uploading ? t("web.uploading") : t(max > 1 ? "web.chooseFiles" : "web.chooseFile")}
       </Button>
 
       {error ? <p className="mt-2 text-xs text-error">{error}</p> : null}
