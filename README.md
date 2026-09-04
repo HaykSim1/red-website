@@ -1,6 +1,24 @@
-# Red Auto marketing website
+# Red Auto website
 
-Static marketing site for **Red Auto** (hy / en / ru): landing (hero, value props, how it works, buyers/sellers, FAQ teaser, screenshots, **contact form + info** two-column block), **FAQ**, **Trust & safety**, **Privacy**, **Terms**, store badges (App Store + Google Play), footer social links, `sitemap.xml`, and `robots.txt`.
+This workspace ships **two things** from one Next.js app and one deploy:
+
+1. **Marketing site** (hy / en / ru) — landing (hero, value props, how it works,
+   buyers/sellers, FAQ teaser, screenshots, **contact form + info** two-column block),
+   **FAQ**, **Trust & safety**, **Privacy**, **Terms**, store badges, footer social
+   links, `sitemap.xml`, `robots.txt`. Pages live under `app/[lang]/(marketing)/`.
+2. **Web app** at `/[lang]/app/*` — the authenticated product for buyers and sellers,
+   reached from the header's **Log in**. Everything the Expo app does. Routes, session
+   design and the deliberate divergences from the Stitch mockups are in
+   [`../docs/web-app.md`](../docs/web-app.md).
+
+Two rules that are easy to break:
+
+- **`app/globals.css` must NOT be imported by the root layout.** It is imported by the
+  `(marketing)` layout and `not-found.tsx`. Its un-layered rules outrank every Tailwind
+  utility regardless of file order; loading it site-wide repaints the app's red CTAs as
+  blue links.
+- **Tailwind v4 is scoped to the app subtree** via `app/[lang]/app/app.css`, imported only
+  by the app and login layouts. Marketing keeps its hand-written CSS and loads no Tailwind.
 
 ## Requirements
 
@@ -34,6 +52,9 @@ Edit `.env.local`:
 | `CONTACT_TO` | Inbox for **contact form** submissions (default `info@red-auto.store`) |
 | `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM` | Required for `POST /api/contact` to send email via Nodemailer. Use port `465` and `SMTP_SECURE=true` if your provider requires SSL. |
 | `SMTP_SECURE` | Optional. Set to `true` for implicit TLS (e.g. port 465). |
+| `NEXT_PUBLIC_API_URL` | **Web app.** Red Auto API origin — no trailing slash, no `/v1`. Inlined at **build** time, so it must be set when the app is compiled, not only at runtime. The site origin must also appear in the API's `CORS_ORIGINS`. |
+| `NEXT_PUBLIC_MEDIA_BASE_URL` | Optional CDN base for uploaded media; otherwise taken from `GET /v1/client-config`. |
+| `API_INTERNAL_URL` | Optional, **leave unset** unless the Next server reaches the API over a private network. Used only by the server-side `/api/auth/*` handlers — pointing it somewhere unresolvable breaks OTP *verification* while OTP *delivery* keeps working, because the browser and the server take different paths. |
 
 If store URLs are empty, the download section shows a localized “coming soon” message and **no** badge links. If social URLs are empty, the matching icon is hidden.
 
@@ -55,10 +76,11 @@ Replace these files when Apple/Google update brand assets.
 ## Scripts
 
 ```bash
-npm run dev    # local dev server (http://localhost:3000 → redirects to /hy)
-npm run build  # production build
-npm run start  # run production server locally
+npm run dev          # local dev server (http://localhost:3000 → redirects to /hy)
+npm run build        # production build
+npm run start        # run production server locally
 npm run lint
+npm run openapi:gen  # regenerate lib/app/api-generated.d.ts (needs the API running on :3000)
 ```
 
 ## Routes
@@ -71,6 +93,14 @@ npm run lint
 | `/[lang]/trust` | Trust & safety |
 | `/[lang]/privacy` | Privacy policy |
 | `/[lang]/terms` | Terms of use |
+| `/app` | **Store redirect.** 307 by User-Agent: iOS → App Store, Android → Google Play, everything else → `/hy`. For QR codes, SMS and Instagram bios; nothing on the site links to it. Unrelated to `/[lang]/app` below. |
+| `/[lang]/login` | Phone + OTP sign-in |
+| `/[lang]/app` | Web app — dashboard |
+| `/[lang]/app/requests`, `/requests/new`, `/requests/[id]` | Buyer: requests and the deal flow |
+| `/[lang]/app/market`, `/market/[id]`, `/market/[id]/offer` | Seller-only: open requests and offers |
+| `/[lang]/app/history`, `/vehicles`, `/shops/[id]`, `/profile`, `/settings` | Shared |
+| `/api/contact` | Contact form handler (SMTP) |
+| `/api/auth/{verify,refresh,logout}` | Session handlers; the only server-side calls to the API |
 
 ## Screenshots
 
@@ -95,20 +125,18 @@ cp ../mobile/assets/images/logo.png public/logo.png
 - Skip link (keyboard): first focusable control in `[lang]` layout jumps to `#main-content`.
 - Prefer real screenshot dimensions and compressed WebP for LCP.
 
-## Fully static export (optional)
+## Static export — no longer possible
 
-For hosts that only serve static files, enable static HTML export in `next.config.ts`:
+> ⚠️ This workspace **cannot** use `output: "export"` any more, and enabling it will break
+> the site. Static export supports no POST route handlers and no runtime redirects, so it
+> would take out `/api/auth/{verify,refresh,logout}` (sign-in and session refresh),
+> `/api/contact` (the contact form), and `/app` (the store redirect).
+>
+> The marketing pages are still statically prerendered by the normal build — three locales
+> per route via `generateStaticParams` — so a plain `next build` already gives static HTML
+> where it matters, while keeping the handful of server routes that need a server.
 
-```ts
-const nextConfig = {
-  output: "export",
-  images: { unoptimized: true },
-};
-```
-
-Then `npm run build` writes `out/`. Note: `next start` does not apply to `output: "export"`; use any static file server instead.
-
-On **Vercel**, the default Next.js build (without `output: "export"`) is usually enough.
+On **Vercel**, the default Next.js build is what you want.
 
 ## Store submission
 
