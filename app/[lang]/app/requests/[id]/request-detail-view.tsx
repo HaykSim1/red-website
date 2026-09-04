@@ -26,7 +26,6 @@ export function RequestDetailView({ lang, requestId }: { lang: Locale; requestId
   const { t, i18n } = useTranslation();
   const queryClient = useQueryClient();
 
-  const [acceptOfferId, setAcceptOfferId] = useState<string | null>(null);
   const [confirmComplete, setConfirmComplete] = useState(false);
   const [cancelOpen, setCancelOpen] = useState(false);
   const [cancelReason, setCancelReason] = useState("");
@@ -60,23 +59,6 @@ export function RequestDetailView({ lang, requestId }: { lang: Locale; requestId
     void queryClient.invalidateQueries({ queryKey: qk.selection(requestId) });
     void queryClient.invalidateQueries({ queryKey: qk.homeSummary });
   }
-
-  const acceptM = useMutation({
-    mutationFn: (offerId: string) =>
-      apiJson(`/requests/${requestId}/accept-offer`, {
-        method: "POST",
-        body: JSON.stringify({ offer_id: offerId }),
-      }),
-    onSuccess: () => {
-      setAcceptOfferId(null);
-      setActionError(null);
-      invalidateAll();
-    },
-    onError: (e) => {
-      setAcceptOfferId(null);
-      setActionError(translateApiError(e, i18n));
-    },
-  });
 
   const completeM = useMutation({
     mutationFn: () =>
@@ -144,7 +126,7 @@ export function RequestDetailView({ lang, requestId }: { lang: Locale; requestId
   const dealOfferId = activeOfferId ?? selection?.offer_id ?? null;
   const acceptedOffer = offers.find((o) => o.id === dealOfferId) ?? null;
   const otherOffers = dealOfferId ? offers.filter((o) => o.id !== dealOfferId) : offers;
-  const busy = acceptM.isPending || completeM.isPending || cancelM.isPending;
+  const busy = completeM.isPending || cancelM.isPending;
 
   return (
     <PageContainer>
@@ -201,6 +183,11 @@ export function RequestDetailView({ lang, requestId }: { lang: Locale; requestId
         {request.photos.length > 0 ? <PhotoGrid photos={request.photos} className="mt-5" /> : null}
       </section>
 
+      {/* Nothing in either client creates a deal any more — the Accept action was
+          removed so the web matches mobile. This panel therefore only ever renders for
+          deals accepted before that change, so the two parties can still finish or
+          cancel them instead of being stranded mid-transaction. Once none are left in
+          the wild, DealPanel and its mutations can go too. */}
       {selection ? (
         <div className="mt-6">
           <DealPanel
@@ -251,32 +238,11 @@ export function RequestDetailView({ lang, requestId }: { lang: Locale; requestId
                   lang={lang}
                   offer={offer}
                   dimmed={Boolean(acceptedOffer)}
-                  actions={
-                    !dealOfferId && request.status === "open" ? (
-                      <Button
-                        onClick={() => setAcceptOfferId(offer.id)}
-                        loading={acceptM.isPending && acceptM.variables === offer.id}
-                        disabled={busy}
-                      >
-                        {t("deal.acceptOffer")}
-                      </Button>
-                    ) : undefined
-                  }
                 />
               ))}
           </ul>
         )}
       </section>
-
-      <ConfirmDialog
-        open={acceptOfferId !== null}
-        onClose={() => setAcceptOfferId(null)}
-        onConfirm={() => acceptOfferId && acceptM.mutate(acceptOfferId)}
-        title={t("deal.acceptOfferTitle")}
-        body={t("deal.acceptOfferBody")}
-        confirmLabel={t("deal.acceptOffer")}
-        loading={acceptM.isPending}
-      />
 
       <ConfirmDialog
         open={confirmComplete}
