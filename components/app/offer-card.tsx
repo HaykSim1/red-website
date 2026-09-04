@@ -2,6 +2,7 @@
 
 import { useTranslation } from "react-i18next";
 
+import { ContactLinks } from "@/components/app/contact-links";
 import { Badge } from "@/components/app/ui/badge";
 import { PhotoGrid } from "@/components/app/ui/photo-grid";
 import { formatAmd, offerConditionLabel, offerDeliveryLabel } from "@/lib/app/format";
@@ -11,12 +12,16 @@ import type { Locale } from "@/lib/i18n";
 /**
  * One offer as the buyer sees it.
  *
- * Deliberately renders no seller contact. The product rule is that contact is
- * revealed only after the buyer accepts an offer, and the accepted deal already
- * shows it in DealPanel, sourced from GET /requests/:id/selection. Note that the
- * `seller_identity_hidden` flag on OfferDto currently comes back `false` even for
- * un-accepted offers — the API withholds contact by nulling seller_phone and
- * seller_telegram instead — so trusting that flag here would have been wrong.
+ * Seller contact is shown immediately, on every offer, matching the mobile card
+ * (`mobile/components/ui/StitchedOfferCard.tsx`) — a deliberate product choice to
+ * keep the two clients identical rather than have the web ask for an extra step
+ * the app does not.
+ *
+ * This is not a gate that was removed: the API returns `seller_phone` and
+ * `seller_telegram` on every offer regardless of acceptance, so withholding them
+ * here only ever hid them from the screen, not from the response. If contact is
+ * to be earned by accepting, that has to be enforced in `serializeOffer()` — see
+ * docs/decisions.md D-018.
  */
 export function OfferCard({
   lang,
@@ -84,6 +89,18 @@ export function OfferCard({
           </span>
         ) : null}
       </div>
+
+      {/* The accepted offer's contact is already in the deal panel directly above,
+          together with the actions — showing it twice on one screen is noise.
+          Mobile has no such panel, which is why every card carries it there. */}
+      {accepted ? null : (
+        <ContactLinks
+          phone={seller?.seller_phone}
+          telegram={seller?.seller_telegram}
+          emptyBehaviour="hide"
+          className="mt-3"
+        />
+      )}
 
       {actions ? <div className="mt-4 flex flex-col gap-2 sm:flex-row">{actions}</div> : null}
     </li>

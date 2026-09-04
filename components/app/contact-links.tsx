@@ -11,19 +11,30 @@ import { useTranslation } from "react-i18next";
 export function ContactLinks({
   phone,
   telegram,
+  /**
+   * What to do when the seller has filled in neither. A labelled block (shop
+   * page, deal panel) says so explicitly; an offer card renders nothing at all,
+   * so a seller without contact details does not get an empty row — same as the
+   * mobile card.
+   */
+  emptyBehaviour = "message",
+  className = "",
 }: {
   phone?: string | null;
   telegram?: string | null;
+  emptyBehaviour?: "message" | "hide";
+  className?: string;
 }) {
   const { t } = useTranslation();
   const handle = telegram?.trim().replace(/^@/, "");
 
   if (!phone && !handle) {
+    if (emptyBehaviour === "hide") return null;
     return <p className="text-sm text-on-surface-variant">{t("shop.phoneNotProvided")}</p>;
   }
 
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className={`flex flex-wrap gap-2 ${className}`}>
       {phone ? (
         <a
           href={`tel:${phone}`}
